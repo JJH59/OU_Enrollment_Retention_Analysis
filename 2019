@@ -1,0 +1,212 @@
+CREATE TABLE Enrollment_By_Campus (
+    Campus VARCHAR(50),
+    Enrollment INT,
+    Percentage DECIMAL(5, 2)
+);
+
+INSERT INTO Enrollment_By_Campus (Campus, Enrollment, Percentage)
+VALUES
+('Norman On-Campus', 25875, 84.9),
+('OU-Tulsa - Norman Campus Programs', 702, 2.3),
+('Extended Campus', 3911, 12.8),
+('Total Norman Campus Unduplicated Headcount', 28089);
+
+CREATE TABLE Race_Ethnicity (
+    Race_Ethnicity VARCHAR(50),
+    Count INT,
+    Percentage DECIMAL(5, 2)
+);
+
+INSERT INTO Race_Ethnicity (Race_Ethnicity, Count, Percentage)
+VALUES
+('American Indian/Alaska Native', 1102, 3.9),
+('Asian', 1639, 5.8),
+('Black/African American', 1429, 5.1),
+('Hispanic', 2837, 10.1),
+('Native Hawaiian/Other Pacific Islander', 33, 0.1),
+('Two or More Races', 2345, 8.3),
+('Minority Subtotal', 9,385 33.4%),
+('White', 16373, 58.3),
+('International', 1701, 6.1),
+('Not Reported', 630, 2.2);
+
+CREATE TABLE Retention_Graduation_Rates (
+    Cohort VARCHAR(50),
+    Rate_Type VARCHAR(50),
+    Percentage DECIMAL(5, 2)
+);
+
+INSERT INTO Retention_Graduation_Rates (Cohort, Rate_Type, Percentage)
+VALUES
+('Fall 2018 cohort', '1-Year Retention Rate', 88.2),
+('Fall 2015 cohort', '4-Year Graduation Rate', 50.1),
+('Fall 2013 cohort', '6-Year Graduation Rate', 70.3);
+
+CREATE TABLE Degrees_Awarded (
+    Degree_Type VARCHAR(50),
+    Count INT
+);
+
+INSERT INTO Degrees_Awarded (Degree_Type, Count)
+VALUES
+('Baccalaureate', 4605),
+('Master\'s', 1924),
+('Doctoral', 233),
+('Law', 179),
+('Undergraduate Certificate', 22),
+('Graduate Certificate', 255),
+('Total', 7218);
+
+CREATE TABLE Student_Levels (
+    Level VARCHAR(50),
+    Count INT,
+    Percentage DECIMAL(5, 2)
+);
+
+INSERT INTO Student_Levels (Level, Count, Percentage)
+VALUES
+('Undergraduate', 21778,77.5),
+('Freshman', 4993, NULL),
+('Sophomore', 4566, NULL),
+('Junior', 4684, NULL),
+('Senior', 7086, NULL),
+('Non-Degree Seeking', 449, NULL),
+('Graduate', 5360, 19.1),
+('Masters', 4176, NULL),
+('Doctoral', 1427, NULL),
+('Certificate', 274, NULL),
+('Unclassified', 2, NULL),
+('Other Non-Degree', 8, NULL),
+('Professional', 951 3.4),
+('Masters', 447, NULL),
+('Doctoral', 502, NULL),
+('Other Non-Degree', 2, NULL);
+
+CREATE TABLE Full_Part_Time_By_Level (
+    Level VARCHAR(50),
+    Enrollment_Type VARCHAR(10),
+    Count INT,
+    Percentage DECIMAL(5, 2)
+);
+
+INSERT INTO Full_Part_Time_By_Level (Level, Enrollment_Type, Count, Percentage)
+VALUES
+('Undergraduates', 'Full-Time', 18982, 87.2),
+('Undergraduates', 'Part-Time', 2796, 12.8),
+('Graduate Students', 'Full-Time', 2322, 43.3),
+('Graduate Students', 'Part-Time', 3038, 56.7),
+('Professional Students', 'Full-Time', 614, 64.6),
+('Professional Students', 'Part-Time', 337, 35.4);
+
+CREATE TABLE Tuition_Residency (
+    Residency_Status VARCHAR(20),
+    Count INT,
+    Percentage DECIMAL(5, 2)
+);
+
+INSERT INTO Tuition_Residency (Residency_Status, Count, Percentage)
+VALUES
+('Resident', 16966, 60.4),
+('Nonresident', 11123, 39.6);
+
+CREATE TABLE Gender_Breakdown (
+    Group VARCHAR(50),
+    Gender VARCHAR(10),
+    Count INT,
+    Percentage DECIMAL(5, 2)
+);
+
+INSERT INTO Gender_Breakdown (Group, Gender, Count, Percentage)
+VALUES
+('Undergraduates', 'Male', 10695, 49.1),
+('Undergraduates', 'Female', 11083, 50.9),
+('Graduate Students', 'Male', 2566, 47.9),
+('Graduate Students', 'Female', 2793, 52.1),
+('Professional Students', 'Male', 406, 42.7),
+('Professional Students', 'Female', 538, 56.6);
+
+CREATE TABLE Freshman_Class_Preparation (
+    Metric VARCHAR(50),
+    Value DECIMAL(5, 2)
+);
+
+INSERT INTO Freshman_Class_Preparation (Metric, Value)
+VALUES
+('Average High School GPA', 3.62),
+('% with HS GPA of 4.0', 12.2),
+('% with High School Ranking of #1', 5.4),
+('Average ACT', 25.9);
+
+CREATE TABLE New_Students_Enrollment (
+    Student_Type VARCHAR(50),
+    Count INT
+);
+
+INSERT INTO New_Students_Enrollment (Student_Type, Count)
+VALUES
+('First-Time Freshmen', 4523),
+('New Transfers', 1119),
+('New Graduate', 963),
+('New Professional', 219);
+
+CREATE TABLE Employees (
+    Role VARCHAR(50),
+    Count INT
+);
+
+INSERT INTO Employees (Role, Count)
+VALUES
+('Faculty', 2002),
+('Staff', 3664),
+('Graduate Assistants', 1770),
+('Student Employees', 3500),
+('Professional Temporary Employees', 1111),
+('Total', 12047);
+
+CREATE TABLE Full_Time_Faculty (
+    Rank VARCHAR(50),
+    Tenured INT,
+    Tenure_Track INT,
+    Renew_Term INT,
+    Not_Eligible INT,
+    Total INT
+);
+
+INSERT INTO Full_Time_Faculty (Rank, Tenured, Tenure_Track, Renew_Term, Not_Eligible, Total)
+VALUES
+('Professor', 366, 0, 12, 1, 379),
+('Associate Professor', 302, 15, 24, 1, 342),
+('Assistant Professor', 0, 230, 60, 4, 294),
+('Instructor', 0, 0, 60, 77, 137),
+('Lecturer', 0, 0, 59, 52, 111),
+('Library Faculty', 15, 0, 0, 0, 15),
+('Researchers', 0, 0, 0, 346, 346),
+('Deans/Assoc. Deans/Asst. Deans', 37, 0, 4, 1, 42),
+('Total', 720, 245, 219, 482, 1666); -- Sum of all totals
+);
+
+CREATE TABLE Instructional_Resources (
+    Metric VARCHAR(50),
+    Value DECIMAL(5, 2)
+);
+
+INSERT INTO Instructional_Resources (Metric, Value)
+VALUES
+('Student/Faculty Ratio', 17.3),
+('Average Class Size', 31.9);
+
+CREATE TABLE Full_Time_Instructional_Faculty (
+    Metric VARCHAR(50),
+    Percentage DECIMAL(5, 2)
+);
+
+INSERT INTO Full_Time_Instructional_Faculty (Metric, Percentage)
+VALUES
+('Female', 39.2),
+('Minority', 18.9),
+('International', 8.2);
+
+
+
+
+
