@@ -1,0 +1,197 @@
+-- University Enrollment Data SQL Script(2020)
+
+-- Campus Enrollment Overview
+CREATE TABLE campus_enrollment (
+    campus_location VARCHAR(100),
+    total_enrollment INT,
+    percent_of_total DECIMAL(5,2)
+);
+
+INSERT INTO campus_enrollment (campus_location, total_enrollment, percent_of_total) VALUES
+('Norman On-Campus', 25886, 85.9),
+('OU-Tulsa - Norman Campus Programs', 637, 2.1),
+('Extended Campus', 3617, 12.0);
+
+-- Student Demographics
+CREATE TABLE student_demographics (
+    race_ethnicity VARCHAR(50),
+    count INT,
+    percent_of_total DECIMAL(5,2)
+);
+
+INSERT INTO student_demographics (race_ethnicity, count, percent_of_total) VALUES
+('American Indian/Alaska Native', 1014, 3.6),
+('Asian', 1685, 6.1),
+('Black/African American', 1445, 5.2),
+('Hispanic', 3013, 10.8),
+('Native Hawaiian/Other Pacific Islander', 31, 0.1),
+('Two or More Races', 2399, 8.6),
+('White', 16356, 58.9),
+('International', 1385, 5.0),
+('Not Reported', 454, 1.6);
+
+-- Student Level Distribution
+CREATE TABLE student_levels (
+    student_level VARCHAR(100),
+    count INT,
+    percent_of_total DECIMAL(5,2)
+);
+
+INSERT INTO student_levels (student_level, count, percent_of_total) VALUES
+('Undergraduate', 21393, 77.0),
+('Freshman', 4945, 17.8),
+('Sophomore', 4504, 16.2),
+('Junior', 4576, 16.5),
+('Senior', 7062, 25.4),
+('Non-Degree Seeking', 306, 1.1),
+('Graduate', 5423, 19.5),
+('Masters', 4280, 15.4),
+('Doctoral', 1365, 4.9),
+('Certificate', 230, 0.8),
+('Professional', 966, 3.5),
+('Unclassified', 3, 0.0),
+('Other Non-Degree', 5, 0.0);
+
+-- Full-/Part-Time Distribution
+CREATE TABLE full_part_time_distribution (
+    student_level VARCHAR(100),
+    full_time_count INT,
+    part_time_count INT,
+    full_time_percent DECIMAL(5,2),
+    part_time_percent DECIMAL(5,2)
+);
+
+INSERT INTO full_part_time_distribution (student_level, full_time_count, part_time_count, full_time_percent, part_time_percent) VALUES
+('Undergraduates', 18534, 2859, 86.6, 13.4),
+('Graduate Students', 2665, 2758, 49.1, 50.9),
+('Professional', 596, 370, 61.7, 38.3);
+
+-- Enrollment by Residency
+CREATE TABLE enrollment_residency (
+    residency_type VARCHAR(50),
+    count INT,
+    percent_of_total DECIMAL(5,2)
+);
+
+INSERT INTO enrollment_residency (residency_type, count, percent_of_total) VALUES
+('Resident', 16463, 59.3),
+('Nonresident', 11319, 40.7);
+
+-- Gender Distribution
+CREATE TABLE gender_distribution (
+    student_level VARCHAR(50),
+    male_count INT,
+    female_count INT,
+    male_percent DECIMAL(5,2),
+    female_percent DECIMAL(5,2),
+    not_reported_count INT
+);
+
+INSERT INTO gender_distribution (student_level, male_count, female_count, male_percent, female_percent, not_reported_count) VALUES
+('Undergraduate', 10487, 10906, 49.0, 51.0, 0),
+('Graduate', 2601, 2820, 48.0, 52.0, 2),
+('Professional', 401, 562, 41.5, 58.2, 3);
+
+-- New Students
+CREATE TABLE new_students (
+    student_type VARCHAR(100),
+    count INT
+);
+
+INSERT INTO new_students (student_type, count) VALUES
+('First-Time Freshmen', 4422),
+('New Transfers', 1090),
+('New Graduate', 1175),
+('New Professional', 362);
+
+-- Freshman Class Preparation
+CREATE TABLE freshman_preparation (
+    metric VARCHAR(100),
+    value DECIMAL(5,2)
+);
+
+INSERT INTO freshman_preparation (metric, value) VALUES
+('Average High School GPA', 3.63),
+('Percent with HS GPA of 4.0', 11.9),
+('Percent with High School Ranking of #1', 4.7),
+('Average ACT Score', 25.8);
+
+-- Instructional Resources
+CREATE TABLE instructional_resources (
+    metric VARCHAR(100),
+    value DECIMAL(5,2)
+);
+
+INSERT INTO instructional_resources (metric, value) VALUES
+('Student/Faculty Ratio', 17.3),
+('Average Class Size', 30.8);
+
+-- Full-Time Instructional Faculty Demographics
+CREATE TABLE instructional_faculty_demographics (
+    metric VARCHAR(100),
+    percent DECIMAL(5,2)
+);
+
+INSERT INTO instructional_faculty_demographics (metric, percent) VALUES
+('Female', 40.0),
+('Minority', 19.4),
+('International', 8.8);
+
+-- Degrees Awarded
+CREATE TABLE degrees_awarded (
+    degree_type VARCHAR(50),
+    count INT
+);
+
+INSERT INTO degrees_awarded (degree_type, count) VALUES
+('Baccalaureate', 4628),
+('Master''s', 1975),
+('Doctoral', 212),
+('Law', 150),
+('Undergraduate Certificate', 29),
+('Graduate Certificate', 176);
+
+-- Employee Distribution
+CREATE TABLE employee_distribution (
+    employee_type VARCHAR(50),
+    count INT
+);
+
+INSERT INTO employee_distribution (employee_type, count) VALUES
+('Faculty', 1996),
+('Staff', 3641),
+('Graduate Assistants', 1614),
+('Student Employees', 2569),
+('Professional Temporary Employees', 925);
+
+-- Faculty Tenure Status
+CREATE TABLE faculty_tenure (
+    rank VARCHAR(50),
+    tenured INT,
+    tenure_track INT,
+    not_tenure_track INT,
+    not_eligible INT,
+    total INT
+);
+
+INSERT INTO faculty_tenure (rank, tenured, tenure_track, not_tenure_track, not_eligible, total) VALUES
+('Professor', 369, 0, 12, 0, 381),
+('Associate Professor', 327, 10, 22, 0, 359),
+('Assistant Professor', 0, 211, 56, 3, 270),
+('Instructor', 0, 0, 62, 77, 139),
+('Lecturer', 0, 0, 62, 57, 119),
+('Library Faculty', 14, 0, 0, 0, 14),
+('Researchers', 0, 0, 0, 349, 349),
+('Deans/Assoc. Deans/Asst. Deans', 40, 0, 3, 0, 43);
+
+-- Graduation Rates
+CREATE TABLE graduation_rates (
+    rate_type VARCHAR(100),
+    cohort_year INT,
+    rate DECIMAL(5,2)
+);
+
+INSERT INTO graduation_rates (rate_type, cohort_year, rate) VALUES
+('1-Year Retention Rate', 2019, 87.1),
+('4-Year Graduation Rate', 2016, 53.1),
+('6-Year Graduation Rate', 2014, 72.1);
