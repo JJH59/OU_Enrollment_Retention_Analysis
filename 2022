@@ -1,202 +1,238 @@
-CREATE TABLE Enrollment_By_Campus (
-    Campus VARCHAR(50),
-    Enrollment INT,
-    Percentage DECIMAL(5, 2)
+-- Enrollment by Campus
+CREATE TABLE enrollment_by_campus_2022 (
+    year INT,
+    campus_name VARCHAR(255) PRIMARY KEY,
+    enrollment INT,
+    percentage FLOAT
 );
 
-INSERT INTO Enrollment_By_Campus (Campus, Enrollment, Percentage)
+INSERT INTO enrollment_by_campus_2022 (year, campus_name, enrollment, percentage)
 VALUES
-    ('Norman On-Campus', 26871, 87.7),
-    ('OU-Tulsa - Norman Campus Programs', 509, 1.7),
-    ('Extended Campus', 3275, 10.7),
-    ('Total Norman Campus Unduplicated Headcount', 28320, NULL);
+    (2022, 'Norman On-Campus', 26871, 87.7),
+    (2022, 'OU-Tulsa', 509, 1.7),
+    (2022, 'Extended Campus', 3275, 10.7);
 
-CREATE TABLE Race_Ethnicity (
-    Race_Ethnicity VARCHAR(50),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+-- Race/Ethnicity
+CREATE TABLE race_ethnicity_2022 (
+    year INT,
+    ethnicity VARCHAR(255) PRIMARY KEY,
+    count INT,
+    percentage FLOAT
 );
 
-INSERT INTO Race_Ethnicity (Race_Ethnicity, Count, Percentage)
+INSERT INTO race_ethnicity_2022 (year, ethnicity, count, percentage)
 VALUES
-    ('American Indian/Alaska Native', 1051, 3.7),
-    ('Asian', 1743, 6.2),
-    ('Black/African American', 1516, 5.4),
-    ('Hispanic', 3463, 12.2),
-    ('Native Hawaiian/Other Pacific Islander', 28, 0.1),
-    ('Two or More Races', 2552, 9.0),
-    ('White', 15933, 56.3),
-    ('International', 1627, 5.7),
-    ('Not Reported', 407, 1.4);
+    (2022, 'American Indian/Alaska Native', 1051, 3.7),
+    (2022, 'Asian', 1743, 6.2),
+    (2022, 'Black/African American', 1516, 5.4),
+    (2022, 'Hispanic', 3463, 12.2),
+    (2022, 'Native Hawaiian/Other Pacific Islander', 28, 0.1),
+    (2022, 'Two or More Races', 2552, 9.0),
+    (2022, 'Minority Subtotal', 10353, 36.6),
+    (2022, 'White', 15933, 56.3),
+    (2022, 'International', 1627, 5.7),
+    (2022, 'Not Reported', 407, 1.4);
 
-
-CREATE TABLE Retention_Graduation_Rates (
-    Cohort VARCHAR(50),
-    Rate_Type VARCHAR(50),
-    Percentage DECIMAL(5, 2)
+-- Retention and Graduation Rates
+CREATE TABLE retention_graduation_rates_2022 (
+    year INT,
+    metric VARCHAR(255) PRIMARY KEY,
+    rate FLOAT
 );
 
-INSERT INTO Retention_Graduation_Rates (Cohort, Rate_Type, Percentage)
+INSERT INTO retention_graduation_rates_2022 (year, metric, rate)
 VALUES
-    ('Fall 2021 cohort', '1-Year Retention Rate', 88.0),
-    ('Fall 2018 cohort', '4-Year Graduation Rate', 57.5),
-    ('Fall 2016 cohort', '6-Year Graduation Rate', 75.8);
+    (2022, '1-Year Retention Rate (Fall 2021 cohort)', 88.0),
+    (2022, '4-Year Graduation Rate (Fall 2018 cohort)', 57.5),
+    (2022, '6-Year Graduation Rate (Fall 2016 cohort)', 75.8);
 
-
-CREATE TABLE Degrees_Awarded (
-    Degree_Type VARCHAR(50),
-    Count INT
+-- Degrees Awarded
+CREATE TABLE degrees_awarded_2022 (
+    year INT,
+    degree_level VARCHAR(255) PRIMARY KEY,
+    count INT
 );
 
-INSERT INTO Degrees_Awarded (Degree_Type, Count)
+INSERT INTO degrees_awarded_2022 (year, degree_level, count)
 VALUES
-    ('Baccalaureate', 4530),
-    ('Master\'s', 2050),
-    ('Doctoral', 198),
-    ('Law', 168),
-    ('Undergraduate Certificate', 19),
-    ('Graduate Certificate', 183);
+    (2022, 'Baccalaureate', 4530),
+    (2022, 'Master\'s', 2050),
+    (2022, 'Doctoral', 198),
+    (2022, 'Law', 168),
+    (2022, 'Undergraduate Certificate', 19),
+    (2022, 'Graduate Certificate', 183),
+    (2022, 'Total', 7148);
 
-CREATE TABLE Student_Levels (
-    Level VARCHAR(50),
-    Count INT
+-- Student Levels
+CREATE TABLE student_levels_2022 (
+    year INT,
+    level VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level)
 );
 
-INSERT INTO Student_Levels (Level, Count)
+INSERT INTO student_levels_2022 (year, level, count, percentage)
 VALUES
-    ('Undergraduate', 21294),
-    ('Freshman', 5134),
-    ('Sophomore', 4592),
-    ('Junior', 4767),
-    ('Senior', 6349),
-    ('Non-Degree Seeking', 452),
-    ('Graduate', 6074),
-    ('Masters', 4829),
-    ('Doctoral', 1459),
-    ('Certificate', 181),
-    ('Unclassified', 4),
-    ('Other Non-Degree', 10),
-    ('Professional', 952);
+    (2022, 'Undergraduate', 21294, 75.2),
+    (2022, 'Freshman', 5134, NULL),
+    (2022, 'Sophomore', 4592, NULL),
+    (2022, 'Junior', 4767, NULL),
+    (2022, 'Senior', 6349, NULL),
+    (2022, 'Non-Degree Seeking', 452, NULL),
+    (2022, 'Graduate', 6074, 21.4),
+    (2022, 'Masters', 4829, NULL),
+    (2022, 'Doctoral', 1459, NULL),
+    (2022, 'Certificate', 181, NULL),
+    (2022, 'Unclassified', 4, NULL),
+    (2022, 'Other Non-Degree', 10, NULL),
+    (2022, 'Professional', 952, 3.4),
+    (2022, 'Masters (Additional)', 408, NULL),
+    (2022, 'Doctoral (Additional)', 544, NULL),
+    (2022, 'Other Non-Degree (Additional)', 0, NULL);
 
-CREATE TABLE Full_Part_Time_By_Level (
-    Level VARCHAR(50),
-    Enrollment_Type VARCHAR(10),
-    Count INT
+-- New Students
+CREATE TABLE new_students_2022 (
+    year INT,
+    student_type VARCHAR(255) PRIMARY KEY,
+    count INT
 );
 
-INSERT INTO Full_Part_Time_By_Level (Level, Enrollment_Type, Count)
+INSERT INTO new_students_2022 (year, student_type, count)
 VALUES
-    ('Undergraduates', 'Full-Time', 18599),
-    ('Undergraduates', 'Part-Time', 2695),
-    ('Graduate Students', 'Full-Time', 3181),
-    ('Graduate Students', 'Part-Time', 2893),
-    ('Professional Students', 'Full-Time', 659),
-    ('Professional Students', 'Part-Time', 293);
+    (2022, 'First-Time Freshmen', 4683),
+    (2022, 'New Transfers', 1155),
+    (2022, 'New Graduate Students', 1512),
+    (2022, 'New Professional Students', 330);
 
-CREATE TABLE Tuition_Residency (
-    Residency_Status VARCHAR(20),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+-- Tuition Residency
+CREATE TABLE tuition_residency_2022 (
+    year INT,
+    residency_status VARCHAR(255) PRIMARY KEY,
+    count INT,
+    percentage FLOAT
 );
 
-INSERT INTO Tuition_Residency (Residency_Status, Count, Percentage)
+INSERT INTO tuition_residency_2022 (year, residency_status, count, percentage)
 VALUES
-    ('Resident', 16061, 56.7),
-    ('Nonresident', 12259, 43.3);
+    (2022, 'Resident', 16061, 56.7),
+    (2022, 'Nonresident', 12259, 43.3);
 
-CREATE TABLE Gender_Breakdown (
-    Group VARCHAR(50),
-    Gender VARCHAR(10),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+-- Gender Demographics
+CREATE TABLE gender_demographics_2022 (
+    year INT,
+    level VARCHAR(255),
+    gender VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level, gender)
 );
 
-INSERT INTO Gender_Breakdown (Group, Gender, Count, Percentage)
+INSERT INTO gender_demographics_2022 (year, level, gender, count, percentage)
 VALUES
-    ('Undergraduates', 'Male', 10337, 48.5),
-    ('Undergraduates', 'Female', 10957, 51.5),
-    ('Graduate Students', 'Male', 2621, 43.2),
-    ('Graduate Students', 'Female', 3452, 56.8),
-    ('Professional Students', 'Male', 340, 35.7),
-    ('Professional Students', 'Female', 611, 64.2);
+    (2022, 'Undergraduate', 'Male', 10337, 48.5),
+    (2022, 'Undergraduate', 'Female', 10957, 51.5),
+    (2022, 'Undergraduate', 'Not Reported', 0, 0.0),
+    (2022, 'Graduate', 'Male', 2621, 43.2),
+    (2022, 'Graduate', 'Female', 3452, 56.8),
+    (2022, 'Graduate', 'Not Reported', 1, 0.0),
+    (2022, 'Professional', 'Male', 340, 35.7),
+    (2022, 'Professional', 'Female', 611, 64.2),
+    (2022, 'Professional', 'Not Reported', 1, 0.1);
 
-CREATE TABLE Freshman_Class_Preparation (
-    Metric VARCHAR(50),
-    Value DECIMAL(5, 2)
+-- Class Preparation
+CREATE TABLE class_preparation_2022 (
+    year INT,
+    metric VARCHAR(255) PRIMARY KEY,
+    value FLOAT
 );
 
-INSERT INTO Freshman_Class_Preparation (Metric, Value)
+INSERT INTO class_preparation_2022 (year, metric, value)
 VALUES
-    ('Average High School GPA', 3.67),
-    ('% with HS GPA of 4.0', 13.2),
-    ('% with High School Ranking of #1', 4.8),
-    ('Average ACT', 26.0);
+    (2022, 'Average High School GPA', 3.67),
+    (2022, '% with HS GPA of 4.0', 13.2),
+    (2022, '% with High School Ranking of #1', 4.8),
+    (2022, 'Average ACT Score', 26.0);
 
-CREATE TABLE New_Students_Enrollment (
-    Student_Type VARCHAR(50),
-    Count INT
+-- Instructional Resources
+CREATE TABLE instructional_resources_2022 (
+    year INT,
+    metric VARCHAR(255) PRIMARY KEY,
+    value FLOAT
 );
 
-INSERT INTO New_Students_Enrollment (Student_Type, Count)
+INSERT INTO instructional_resources_2022 (year, metric, value)
 VALUES
-    ('First-Time Freshmen', 4683),
-    ('New Transfers', 1155),
-    ('New Graduate', 1512),
-    ('New Professional', 330);
+    (2022, 'Student/Faculty Ratio', 16.5),
+    (2022, 'Average Class Size', 30.9);
 
-CREATE TABLE Employees (
-    Role VARCHAR(50),
-    Count INT
+-- Employee Counts
+CREATE TABLE full_time_faculty_2022 (
+    year INT,
+    title VARCHAR(255),
+    tenured INT,
+    tenure_track INT,
+    term INT,
+    eligible INT,
+    total INT
 );
 
-INSERT INTO Employees (Role, Count)
+INSERT INTO full_time_faculty_2022 (year, title, tenured, tenure_track, term, eligible, total)
 VALUES
-    ('Faculty', 2093),
-    ('Staff', 3711),
-    ('Graduate Assistants', 1779),
-    ('Student Employees', 2729),
-    ('Professional Temporary Employees', 1220);
+    (2022, 'Professor', 346, 0, 15, 2, 363),
+    (2022, 'Associate Professor', 340, 11, 20, 0, 371),
+    (2022, 'Assistant Professor', 0, 279, 61, 3, 343),
+    (2022, 'Instructor', 0, 0, 81, 59, 140),
+    (2022, 'Lecturer', 0, 0, 97, 57, 154),
+    (2022, 'Library Faculty', 13, 0, 0, 0, 13),
+    (2022, 'Researchers', 0, 0, 0, 349, 349),
+    (2022, 'Deans/Associate/Assistant Deans', 39, 0, 3, 2, 44),
+    (2022, 'Total', 738, 290, 277, 474, 1779);
 
-CREATE TABLE Full_Time_Faculty (
-    Rank VARCHAR(50),
-    Tenured INT,
-    Tenure_Track INT,
-    Renew_Term INT,
-    Not_Eligible INT,
-    Total INT
+-- Full/Part-Time Enrollment
+CREATE TABLE full_part_time_enrollment_2022 (
+    year INT,
+    level VARCHAR(255),
+    status VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level, status)
 );
 
-INSERT INTO Full_Time_Faculty (Rank, Tenured, Tenure_Track, Renew_Term, Not_Eligible, Total)
+INSERT INTO full_part_time_enrollment_2022 (year, level, status, count, percentage)
 VALUES
-    ('Professor', 354, 0, 14, 2, 370),
-    ('Associate Professor', 341, 8, 18, 1, 368),
-    ('Assistant Professor', 0, 233, 58, 5, 296),
-    ('Instructor', 0, 0, 65, 79, 144),
-    ('Lecturer', 0, 0, 87, 66, 153),
-    ('Library Faculty', 13, 0, 0, 0, 13),
-    ('Researchers', 0, 0, 0, 355, 355),
-    ('Deans/Assoc. Deans/Asst. Deans', 38, 0, 3, 0, 41),
-    ('Total', 746, 241, 245, 509, 1741);
+    (2022, 'Undergraduate', 'Full-Time', 18599, 87.3),
+    (2022, 'Undergraduate', 'Part-Time', 2695, 12.7),
+    (2022, 'Graduate', 'Full-Time', 3181, 52.4),
+    (2022, 'Graduate', 'Part-Time', 2893, 47.6),
+    (2022, 'Professional', 'Full-Time', 659, 69.2),
+    (2022, 'Professional', 'Part-Time', 293, 30.8);
 
-CREATE TABLE Instructional_Resources (
-    Metric VARCHAR(50),
-    Value DECIMAL(5, 2)
+-- Full-Time Instructional Faculty
+CREATE TABLE full_time_instructional_faculty_2022 (
+    year INT,
+    demographic VARCHAR(255) PRIMARY KEY,
+    percentage FLOAT
 );
 
-INSERT INTO Instructional_Resources (Metric, Value)
+INSERT INTO full_time_instructional_faculty_2022 (year, demographic, percentage)
 VALUES
-    ('Student/Faculty Ratio', 16.5),
-    ('Average Class Size', 30.9);
+    (2022, 'Female', 42.4),
+    (2022, 'Minority', 22.6),
+    (2022, 'International', 7.4);
 
-
-CREATE TABLE Full_Time_Instructional_Faculty (
-    Metric VARCHAR(50),
-    Percentage DECIMAL(5, 2)
+CREATE TABLE employee_counts_2022 (
+    year INT,
+    category VARCHAR(255) PRIMARY KEY,
+    count INT
 );
 
-INSERT INTO Full_Time_Instructional_Faculty (Metric, Percentage)
+INSERT INTO employee_counts_2022 (year, category, count)
 VALUES
-    ('Female', 42.4),
-    ('Minority', 22.6),
-    ('International', 7.4);
+    (2022, 'Employees Faculty', 2093),
+    (2022, 'Staff', 3711),
+    (2022, 'Graduate Assistants', 1779),
+    (2022, 'Student Employees', 2729),
+    (2022, 'Temporary Employees', 1220),
+    (2022, 'Total', 11532);
 
