@@ -162,7 +162,7 @@ CREATE TABLE employee_count_2018 (
 
 INSERT INTO employee_count_2018 (year, category, count)
 VALUES
-    (2018, 'Employees Faculty', 1922),
+    (2018, 'Faculty', 1922),
     (2018, 'Staff', 4039),
     (2018, 'Graduate Assistants', 1789),
     (2018, 'Student Employees', 3758),
