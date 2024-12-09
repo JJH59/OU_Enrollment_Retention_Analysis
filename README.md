@@ -4,6 +4,12 @@ This project involves analyzing student enrollment and graduation data from the 
 # Project Overview
 This project involves analyzing student enrollment and graduation data from the University of Oklahoma using SQL and visualizing the results in Tableau. The goal is to uncover trends in enrollment, retention rates, and graduation outcomes based on demographic factors.
 
+
+## Objectives
+- To uncover actionable insights into factors influencing student retention and graduation rates.
+- To visualize these insights in a clear and accessible way to support institutional strategies.
+- To provide a comprehensive understanding of demographic impacts on student suc
+
 ## Description
 The primary goals are to:
 
@@ -23,10 +29,9 @@ The findings from these analyses provide valuable insights into student behavior
 - **SQL** for data retrieval and cleaning.
 - **Tableau** for data visualization and creating dashboards to showcase trends and insights.
 
-## Objectives
-- To uncover actionable insights into factors influencing student retention and graduation rates.
-- To visualize these insights in a clear and accessible way to support institutional strategies.
-- To provide a comprehensive understanding of demographic impacts on student success.
+## Prerequisites
+- Access to a MySQL or PostgreSQL database with the appropriate schema.
+- Knowledge of how to set up a local database if you are not using a hosted one.
 
 ## Usage
 - Clone the repository to your local machine.
@@ -34,6 +39,9 @@ The findings from these analyses provide valuable insights into student behavior
 - Explore the SQL scripts to understand how data is retrieved and transformed.
 - Open the provided Tableau files to view and interact with the visualizations.
 - Modify the SQL queries and Tableau dashboards as needed to adapt the project to different datasets or analyses.
+2. Set up the database schema by running the appropriate scripts (if tables need to be recreated from scratch).
+3. Navigate to the `/sql` directory.
+4. Run the SQL scripts to perform analysis on the prepared data.
 
 ## License
 This project is licensed under the Apache 2.0 License.
