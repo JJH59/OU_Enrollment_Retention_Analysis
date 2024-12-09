@@ -1,111 +1,3 @@
-Enrollment Growth Over Time
-SELECT 
-    year,
-    SUM(enrollment) AS total_enrollment,
-    LAG(SUM(enrollment)) OVER (ORDER BY year) AS previous_enrollment,
-    ROUND(((SUM(enrollment) - LAG(SUM(enrollment)) OVER (ORDER BY year)) / 
-    LAG(SUM(enrollment)) OVER (ORDER BY year)) * 100, 2) AS growth_rate
-FROM (
-    SELECT year, enrollment FROM enrollment_by_campus_2018
-    UNION ALL
-    SELECT year, enrollment FROM enrollment_by_campus_2019
-    UNION ALL
-    SELECT year, enrollment FROM enrollment_by_campus_2020
-    UNION ALL
-    SELECT year, enrollment FROM enrollment_by_campus_2021
-    UNION ALL
-    SELECT year, enrollment FROM enrollment_by_campus_2022
-    UNION ALL
-    SELECT year, enrollment FROM enrollment_by_campus_2023
-) AS combined
-GROUP BY year;
-
- Retention and Graduation Rate Trends
-
-SELECT 
-    year,
-    MAX(CASE WHEN metric LIKE '%Retention%' THEN rate END) AS retention_rate,
-    MAX(CASE WHEN metric LIKE '%4-Year%' THEN rate END) AS grad_rate_4yr,
-    MAX(CASE WHEN metric LIKE '%6-Year%' THEN rate END) AS grad_rate_6yr
-FROM (
-    SELECT * FROM retention_graduation_rates_2018
-    UNION ALL
-    SELECT * FROM retention_graduation_rates_2019
-    UNION ALL
-    SELECT * FROM retention_graduation_rates_2020
-    UNION ALL
-    SELECT * FROM retention_graduation_rates_2021
-    UNION ALL
-    SELECT * FROM retention_graduation_rates_2022
-    UNION ALL
-    SELECT * FROM retention_graduation_rates_2023
-) AS combined
-GROUP BY year;
-
-Minority Enrollment Change
-SELECT 
-    year,
-    SUM(CASE WHEN ethnicity = 'Minority Subtotal' THEN count END) AS minority_count,
-    SUM(CASE WHEN ethnicity = 'White' THEN count END) AS white_count,
-    ROUND((SUM(CASE WHEN ethnicity = 'Minority Subtotal' THEN count END) /
-    SUM(count)) * 100, 2) AS minority_percentage
-FROM (
-    SELECT * FROM race_ethnicity_2018
-    UNION ALL
-    SELECT * FROM race_ethnicity_2019
-    UNION ALL
-    SELECT * FROM race_ethnicity_2020
-    UNION ALL
-    SELECT * FROM race_ethnicity_2021
-    UNION ALL
-    SELECT * FROM race_ethnicity_2022
-    UNION ALL
-    SELECT * FROM race_ethnicity_2023
-) AS combined
-GROUP BY year;
-
-Gender Breakdown by Level
-SELECT 
-    year,
-    level,
-    SUM(CASE WHEN gender = 'Male' THEN count END) AS male_count,
-    SUM(CASE WHEN gender = 'Female' THEN count END) AS female_count,
-    ROUND(SUM(CASE WHEN gender = 'Male' THEN count END) / SUM(count) * 100, 2) AS male_percentage,
-    ROUND(SUM(CASE WHEN gender = 'Female' THEN count END) / SUM(count) * 100, 2) AS female_percentage
-FROM (
-    SELECT * FROM gender_demographics_2018
-    UNION ALL
-    SELECT * FROM gender_demographics_2019
-    UNION ALL
-    SELECT * FROM gender_demographics_2020
-    UNION ALL
-    SELECT * FROM gender_demographics_2021
-    UNION ALL
-    SELECT * FROM gender_demographics_2022
-    UNION ALL
-    SELECT * FROM gender_demographics_2023
-) AS combined
-GROUP BY year, level;
-
- Graduation Rate by Demographics
-SELECT 
-    year,
-    ethnicity,
-    ROUND(AVG(percentage), 2) AS avg_graduation_rate
-FROM (
-    SELECT year, ethnicity, percentage FROM race_ethnicity_2018
-    UNION ALL
-    SELECT year, ethnicity, percentage FROM race_ethnicity_2019
-    UNION ALL
-    SELECT year, ethnicity, percentage FROM race_ethnicity_2020
-    UNION ALL
-    SELECT year, ethnicity, percentage FROM race_ethnicity_2021
-    UNION ALL
-    SELECT year, ethnicity, percentage FROM race_ethnicity_2022
-    UNION ALL
-    SELECT year, ethnicity, percentage FROM race_ethnicity_2023
-) AS combined
-GROUP BY year, ethnicity;
 
 Retention Rate Correlation with Minority Enrollment
 SELECT 
@@ -150,3 +42,8 @@ JOIN (
     GROUP BY year
 ) AS e
 ON r.year = e.year;
+
+Predictive Analysis:
+
+    Forecast future enrollment or graduation rates using SQL-based regression or time-series models.
+
