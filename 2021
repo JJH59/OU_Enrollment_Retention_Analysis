@@ -1,189 +1,240 @@
-CREATE TABLE Enrollment_By_Campus (
-    Campus VARCHAR(50),
-    Enrollment INT,
-    Percentage DECIMAL(5, 2)
+-- Enrollment by Campus
+CREATE TABLE enrollment_by_campus_2021 (
+    year INT,
+    campus_name VARCHAR(255) PRIMARY KEY,
+    enrollment INT,
+    percentage FLOAT
 );
 
-INSERT INTO Enrollment_By_Campus (Campus, Enrollment, Percentage)
+INSERT INTO enrollment_by_campus_2021 (year, campus_name, enrollment, percentage)
 VALUES
-('Norman On-Campus', 26510, 87.6),
-('OU-Tulsa - Norman Campus Programs', 616, 2.0),
-('Extended Campus', 3136, 10.4),
-('Total Norman Campus Unduplicated Headcount', 28052, NULL);
+    (2021, 'Norman On-Campus', 26510, 87.6),
+    (2021, 'OU-Tulsa', 616, 2.0),
+    (2021, 'Extended Campus', 3136, 10.4);
 
-CREATE TABLE Race_Ethnicity (
-    Race_Ethnicity VARCHAR(50),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+-- Race/Ethnicity
+CREATE TABLE race_ethnicity_2021 (
+    year INT,
+    ethnicity VARCHAR(255) PRIMARY KEY,
+    count INT,
+    percentage FLOAT
 );
 
-INSERT INTO Race_Ethnicity (Race_Ethnicity, Count, Percentage)
+INSERT INTO race_ethnicity_2021 (year, ethnicity, count, percentage)
 VALUES
-('American Indian/Alaska Native', 1051, 3.7),
-('Asian', 1687, 6.0),
-('Black/African American', 1501, 5.4),
-('Hispanic', 3260, 11.6),
-('Native Hawaiian/Other Pacific Islander', 34, 0.1),
-('Two or More Races', 2473, 8.8),
-('White', 16169, 57.6),
-('International', 1471, 5.2),
-('Not Reported', 406, 1.4);
+    (2021, 'American Indian/Alaska Native', 1051, 3.7),
+    (2021, 'Asian', 1687, 6.0),
+    (2021, 'Black/African American', 1501, 5.4),
+    (2021, 'Hispanic', 3260, 11.6),
+    (2021, 'Native Hawaiian/Other Pacific Islander', 34, 0.1),
+    (2021, 'Two or More Races', 2473, 8.8),
+    (2021, 'Minority Subtotal', 10006, 35.7),
+    (2021, 'White', 16169, 57.6),
+    (2021, 'International', 1471, 5.2),
+    (2021, 'Not Reported', 406, 1.4);
 
-CREATE TABLE Retention_Graduation_Rates (
-    Cohort VARCHAR(50),
-    Rate_Type VARCHAR(50),
-    Percentage DECIMAL(5, 2)
+-- Retention and Graduation Rates
+CREATE TABLE retention_graduation_rates_2021 (
+    year INT,
+    metric VARCHAR(255) PRIMARY KEY,
+    rate FLOAT
 );
 
-INSERT INTO Retention_Graduation_Rates (Cohort, Rate_Type, Percentage)
+INSERT INTO retention_graduation_rates_2021 (year, metric, rate)
 VALUES
-('Fall 2020 cohort', '1-Year Retention Rate', 88.5),
-('Fall 2017 cohort', '4-Year Graduation Rate', 55.5),
-('Fall 2015 cohort', '6-Year Graduation Rate', 75.7);
+    (2021, '1-Year Retention Rate (Fall 2020 cohort)', 88.5),
+    (2021, '4-Year Graduation Rate (Fall 2017 cohort)', 55.5),
+    (2021, '6-Year Graduation Rate (Fall 2015 cohort)', 75.7);
 
-CREATE TABLE Degrees_Awarded (
-    Degree_Type VARCHAR(50),
-    Count INT
+-- Degrees Awarded
+CREATE TABLE degrees_awarded_2021 (
+    year INT,
+    degree_level VARCHAR(255) PRIMARY KEY,
+    count INT
 );
 
-INSERT INTO Degrees_Awarded (Degree_Type, Count)
+INSERT INTO degrees_awarded_2021 (year, degree_level, count)
 VALUES
-('Baccalaureate', 4799),
-('Master\'s', 1851),
-('Doctoral', 208),
-('Law', 170),
-('Undergraduate Certificate', 19),
-('Graduate Certificate', 121);
+    (2021, 'Baccalaureate', 4799),
+    (2021, 'Master\'s', 1851),
+    (2021, 'Doctoral', 208),
+    (2021, 'Law', 170),
+    (2021, 'Undergraduate Certificate', 19),
+    (2021, 'Graduate Certificate', 121),
+    (2021, 'Total', 7168);
 
-CREATE TABLE Student_Levels (
-    Level VARCHAR(50),
-    Count INT
+-- Student Levels
+CREATE TABLE student_levels_2021 (
+    year INT,
+    level VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level)
 );
 
-INSERT INTO Student_Levels (Level, Count)
+INSERT INTO student_levels_2021 (year, level, count, percentage)
 VALUES
-('Undergraduate', 21162),
-('Freshman', 4976),
-('Sophomore', 4526),
-('Junior', 4599),
-('Senior', 6699),
-('Non-Degree Seeking', 362),
-('Graduate', 5844),
-('Masters', 4677),
-('Doctoral', 1382),
-('Certificate', 183),
-('Unclassified', 5),
-('Other Non-Degree', 5),
-('Professional', 1046);
+    (2021, 'Undergraduate', 21162, 75.4),
+    (2021, 'Freshman', 4976, NULL),
+    (2021, 'Sophomore', 4526, NULL),
+    (2021, 'Junior', 4599, NULL),
+    (2021, 'Senior', 6699, NULL),
+    (2021, 'Non-Degree Seeking', 362, NULL),
+    (2021, 'Graduate', 5844, 20.8),
+    (2021, 'Masters', 4677, NULL),
+    (2021, 'Doctoral', 1382, NULL),
+    (2021, 'Certificate', 183, NULL),
+    (2021, 'Unclassified', 5, NULL),
+    (2021, 'Other Non-Degree', 5, NULL),
+    (2021, 'Professional', 1046, 3.7),
+    (2021, 'Masters (Additional)', 502, NULL),
+    (2021, 'Doctoral (Additional)', 543, NULL),
+    (2021, 'Other Non-Degree (Additional)', 1, NULL);
 
-CREATE TABLE Full_Part_Time_By_Level (
-    Level VARCHAR(50),
-    Enrollment_Type VARCHAR(10),
-    Count INT
+-- New Students
+CREATE TABLE new_students_2021 (
+    year INT,
+    student_type VARCHAR(255) PRIMARY KEY,
+    count INT
 );
 
-INSERT INTO Full_Part_Time_By_Level (Level, Enrollment_Type, Count)
+INSERT INTO new_students_2021 (year, student_type, count)
 VALUES
-('Undergraduates', 'Full-Time', 18272),
-('Undergraduates', 'Part-Time', 2890),
-('Graduate Students', 'Full-Time', 2955),
-('Graduate Students', 'Part-Time', 2889),
-('Professional Students', 'Full-Time', 698),
-('Professional Students', 'Part-Time', 348);
+    (2021, 'First-Time Freshmen', 4582),
+    (2021, 'New Transfers', 1069),
+    (2021, 'New Graduate Students', 1486),
+    (2021, 'New Professional Students', 393);
 
-CREATE TABLE Tuition_Residency (
-    Residency_Status VARCHAR(20),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+-- Tuition Residency
+CREATE TABLE tuition_residency_2021 (
+    year INT,
+    residency_status VARCHAR(255) PRIMARY KEY,
+    count INT,
+    percentage FLOAT
 );
 
-INSERT INTO Tuition_Residency (Residency_Status, Count, Percentage)
+INSERT INTO tuition_residency_2021 (year, residency_status, count, percentage)
 VALUES
-('Resident', 16177, 57.7),
-('Nonresident', 11875, 42.3);
+    (2021, 'Resident', 16177, 57.7),
+    (2021, 'Nonresident', 11875, 42.3);
 
-CREATE TABLE Gender_Breakdown (
-    Group VARCHAR(50),
-    Gender VARCHAR(10),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+-- Gender Demographics
+CREATE TABLE gender_demographics_2021 (
+    year INT,
+    level VARCHAR(255),
+    gender VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level, gender)
 );
 
-INSERT INTO Gender_Breakdown (Group, Gender, Count, Percentage)
+INSERT INTO gender_demographics_2021 (year, level, gender, count, percentage)
 VALUES
-('Undergraduates', 'Male', 10320, 48.8),
-('Undergraduates', 'Female', 10842, 51.2),
-('Graduate Students', 'Male', 2716, 46.5),
-('Graduate Students', 'Female', 3127, 53.5),
-('Professional Students', 'Male', 395, 37.8),
-('Professional Students', 'Female', 650, 62.1);
+    (2021, 'Undergraduate', 'Male', 10320, 48.8),
+    (2021, 'Undergraduate', 'Female', 10842, 51.2),
+    (2021, 'Undergraduate', 'Not Reported', 0, 0.0),
+    (2021, 'Graduate', 'Male', 2716, 46.5),
+    (2021, 'Graduate', 'Female', 3127, 53.5),
+    (2021, 'Graduate', 'Not Reported', 1, 0.0),
+    (2021, 'Professional', 'Male', 395, 37.8),
+    (2021, 'Professional', 'Female', 650, 62.1),
+    (2021, 'Professional', 'Not Reported', 1, 0.1);
 
-CREATE TABLE Freshman_Class_Preparation (
-    Metric VARCHAR(50),
-    Value DECIMAL(5, 2)
+-- Class Preparation
+CREATE TABLE class_preparation_2021 (
+    year INT,
+    metric VARCHAR(255) PRIMARY KEY,
+    value FLOAT
 );
 
-INSERT INTO Freshman_Class_Preparation (Metric, Value)
+INSERT INTO class_preparation_2021 (year, metric, value)
 VALUES
-('Average High School GPA', 3.66),
-('% with HS GPA of 4.0', 13.0),
-('% with High School Ranking of #1', 5.5),
-('Average ACT', 26.3);
+    (2021, 'Average High School GPA', 3.66),
+    (2021, '% with HS GPA of 4.0', 13.0),
+    (2021, '% with High School Ranking of #1', 5.5),
+    (2021, 'Average ACT Score', 26.3);
 
-CREATE TABLE New_Students_Enrollment (
-    Student_Type VARCHAR(50),
-    Count INT
+-- Instructional Resources
+CREATE TABLE instructional_resources_2021 (
+    year INT,
+    metric VARCHAR(255) PRIMARY KEY,
+    value FLOAT
 );
 
-INSERT INTO New_Students_Enrollment (Student_Type, Count)
+INSERT INTO instructional_resources_2021 (year, metric, value)
 VALUES
-('First-Time Freshmen', 4582),
-('New Transfers', 1069),
-('New Graduate', 1486),
-('New Professional', 393);
+    (2021, 'Student/Faculty Ratio', 16.7),
+    (2021, 'Average Class Size', 30.9);
 
-CREATE TABLE Employees (
-    Role VARCHAR(50),
-    Count INT
+-- Employee Counts
+CREATE TABLE employee_counts_2021 (
+    year INT,
+    title VARCHAR(255),
+    tenured INT,
+    tenure_track INT,
+    term INT,
+    eligible INT,
+    total INT
 );
 
-INSERT INTO Employees (Role, Count)
+INSERT INTO employee_counts_2021 (year, title, tenured, tenure_track, term, eligible, total)
 VALUES
-('Faculty', 2014),
-('Staff', 3643),
-('Graduate Assistants', 1707),
-('Student Employees', 2812),
-('Professional Temporary Employees', 909);
+    (2021, 'Professor', 354, 0, 14, 2, 370),
+    (2021, 'Associate Professor', 341, 8, 18, 1, 368),
+    (2021, 'Assistant Professor', 0, 233, 58, 5, 296),
+    (2021, 'Instructor', 0, 0, 65, 79, 144),
+    (2021, 'Lecturer', 0, 0, 87, 66, 153),
+    (2021, 'Library Faculty', 13, 0, 0, 0, 13),
+    (2021, 'Researchers', 0, 0, 0, 355, 355),
+    (2021, 'Deans/Associate/Assistant Deans', 38, 0, 3, 0, 41),
+    (2021, 'Total', 746, 241, 245, 509, 1741);
 
-CREATE TABLE Full_Time_Faculty (
-    Rank VARCHAR(50),
-    Tenured INT,
-    Tenure_Track INT,
-    Renew_Term INT,
-    Not_Eligible INT,
-    Total INT
+-- Full/Part-Time Enrollment
+CREATE TABLE full_part_time_enrollment_2021 (
+    year INT,
+    level VARCHAR(255),
+    status VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level, status)
 );
 
-INSERT INTO Full_Time_Faculty (Rank, Tenured, Tenure_Track, Renew_Term, Not_Eligible, Total)
+INSERT INTO full_part_time_enrollment_2021 (year, level, status, count, percentage)
 VALUES
-('Professor', 354, 0, 14, 2, 370),
-('Associate Professor', 341, 8, 18, 1, 368),
-('Assistant Professor', 0, 233, 58, 5, 296),
-('Instructor', 0, 0, 65, 79, 144),
-('Lecturer', 0, 0, 87, 66, 153),
-('Library Faculty', 13, 0, 0, 0, 13),
-('Researchers', 0, 0, 0, 355, 355),
-('Deans/Assoc. Deans/Asst. Deans', 38, 0, 3, 0, 41),
-('Total', 746, 241, 245, 509, 1741);
+    (2021, 'Undergraduate', 'Full-Time', 18272, 86.3),
+    (2021, 'Undergraduate', 'Part-Time', 2890, 13.7),
+    (2021, 'Graduate', 'Full-Time', 2955, 50.6),
+    (2021, 'Graduate', 'Part-Time', 2889, 49.4),
+    (2021, 'Professional', 'Full-Time', 698, 66.7),
+    (2021, 'Professional', 'Part-Time', 348, 33.3);
 
-CREATE TABLE Full_Time_Instructional_Faculty (
-    Metric VARCHAR(50),
-    Percentage DECIMAL(5, 2)
+-- Full-Time Instructional Faculty
+CREATE TABLE full_time_instructional_faculty_2021 (
+    year INT,
+    demographic VARCHAR(255) PRIMARY KEY,
+    percentage FLOAT
 );
 
-INSERT INTO Full_Time_Instructional_Faculty (Metric, Percentage)
+INSERT INTO full_time_instructional_faculty_2021 (year, demographic, percentage)
 VALUES
-('Female', 41.1),
-('Minority', 20.7),
-('International', 9.9);
+    (2021, 'Female', 41.1),
+    (2021, 'Minority', 20.7),
+    (2021, 'International', 9.9);
+
+-- Employee Summary
+CREATE TABLE employee_summary_2021 (
+    year INT,
+    category VARCHAR(255) PRIMARY KEY,
+    count INT
+);
+
+INSERT INTO employee_summary_2021 (year, category, count)
+VALUES
+    (2021, 'Employees Faculty', 2014),
+    (2021, 'Staff', 3643),
+    (2021, 'Graduate Assistants', 1707),
+    (2021, 'Student Employees', 2812),
+    (2021, 'Temporary Employees', 909),
+    (2021, 'Total', 11085);
+
 
