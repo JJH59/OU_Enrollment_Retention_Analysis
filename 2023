@@ -1,185 +1,238 @@
--- Enrollment by Campus Table
-CREATE TABLE campus_enrollment (
-    campus_location VARCHAR(50) PRIMARY KEY,
-    total_headcount INT,
-    percentage_of_total DECIMAL(5,2)
+-- Enrollment by Campus
+CREATE TABLE enrollment_by_campus_2023 (
+    year INT,
+    campus_name VARCHAR(255) PRIMARY KEY,
+    enrollment INT,
+    percentage FLOAT
 );
-INSERT INTO campus_enrollment (campus_location, total_headcount, percentage_of_total) VALUES
-('Norman On-Campus', 28264, 89.4),
-('OU-Tulsa - Norman Campus Programs', 485, 1.5),
-('Extended Campus', 2884, 9.1);
 
--- Race/Ethnicity Enrollment Table
-CREATE TABLE race_ethnicity_enrollment (
-    race_category VARCHAR(50) PRIMARY KEY,
-    student_count INT,
-    percentage DECIMAL(5,2)
+INSERT INTO enrollment_by_campus_2023 (year, campus_name, enrollment, percentage)
+VALUES
+    (2023, 'Norman On-Campus', 28264, 89.4),
+    (2023, 'OU-Tulsa', 485, 1.5),
+    (2023, 'Extended Campus', 2884, 9.1);
+
+-- Race/Ethnicity
+CREATE TABLE race_ethnicity_2023 (
+    year INT,
+    ethnicity VARCHAR(255) PRIMARY KEY,
+    count INT,
+    percentage FLOAT
 );
-INSERT INTO race_ethnicity_enrollment (race_category, student_count, percentage) VALUES
-('American Indian/Alaska Native', 1107, 3.8),
-('Asian', 1749, 6.0),
-('Black/African American', 1539, 5.3),
-('Hispanic', 3779, 13.0),
-('Native Hawaiian/Other Pacific Islander', 30, 0.1),
-('Two or More Races', 2649, 9.1),
-('Minority Subtotal', 10853, 37.2),
-('White', 16145, 55.4),
-('Not Reported', 464, 1.6),
-('International', 1704, 5.8);
 
--- Student Level Enrollment Table
-CREATE TABLE student_level_enrollment (
-    student_level VARCHAR(50) PRIMARY KEY,
-    student_count INT,
-    percentage DECIMAL(5,2)
+INSERT INTO race_ethnicity_2023 (year, ethnicity, count, percentage)
+VALUES
+    (2023, 'American Indian/Alaska Native', 1107, 3.8),
+    (2023, 'Asian', 1749, 6.0),
+    (2023, 'Black/African American', 1539, 5.3),
+    (2023, 'Hispanic', 3779, 13.0),
+    (2023, 'Native Hawaiian/Other Pacific Islander', 30, 0.1),
+    (2023, 'Two or More Races', 2649, 9.1),
+    (2023, 'Minority Subtotal', 10853, 37.2),
+    (2023, 'White', 16145, 55.4),
+    (2023, 'International', 1704, 5.8),
+    (2023, 'Not Reported', 464, 1.6);
+
+-- Retention and Graduation Rates
+CREATE TABLE retention_graduation_rates_2023 (
+    year INT,
+    metric VARCHAR(255) PRIMARY KEY,
+    rate FLOAT
 );
-INSERT INTO student_level_enrollment (student_level, student_count, percentage) VALUES
-('Undergraduate', 22046, 75.6),
-('Graduate', 6234, 21.4),
-('Professional', 886, 3.0),
-('Freshman', 5577, 19.1),
-('Sophomore', 4839, 16.6),
-('Junior', 4642, 15.9),
-('Senior', 6438, 22.1),
-('Non-Degree Seeking', 550, 1.9);
 
--- Detailed Student Level Breakdown Table
-CREATE TABLE student_level_detail (
-    student_category VARCHAR(50) PRIMARY KEY,
-    student_count INT
+INSERT INTO retention_graduation_rates_2023 (year, metric, rate)
+VALUES
+    (2023, '1-Year Retention Rate (Fall 2022 cohort)', 88.9),
+    (2023, '4-Year Graduation Rate (Fall 2019 cohort)', 58.0),
+    (2023, '6-Year Graduation Rate (Fall 2017 cohort)', 75.3);
+
+-- Degrees Awarded
+CREATE TABLE degrees_awarded_2023 (
+    year INT,
+    degree_level VARCHAR(255) PRIMARY KEY,
+    count INT
 );
-INSERT INTO student_level_detail (student_category, student_count) VALUES
-('Undergraduate', 22046),
-('Graduate', 6234),
-('Masters', 4889),
-('Doctoral', 1497),
-('Certificate', 182),
-('Other Non-Degree', 15),
-('Professional', 886);
 
--- Degrees Awarded Table
-CREATE TABLE degrees_awarded (
-    degree_type VARCHAR(50) PRIMARY KEY,
-    total_awarded INT
+INSERT INTO degrees_awarded_2023 (year, degree_level, count)
+VALUES
+    (2023, 'Baccalaureate', 4727),
+    (2023, 'Master\'s', 2354),
+    (2023, 'Doctoral', 208),
+    (2023, 'Law', 168),
+    (2023, 'Undergraduate Certificate', 51),
+    (2023, 'Graduate Certificate', 159),
+    (2023, 'Total', 7667);
+
+-- Student Levels
+CREATE TABLE student_levels_2023 (
+    year INT,
+    level VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level)
 );
-INSERT INTO degrees_awarded (degree_type, total_awarded) VALUES
-('Baccalaureate', 4727),
-('Master''s', 2354),
-('Doctoral', 208),
-('Law', 168),
-('Undergraduate Certificate', 51),
-('Graduate Certificate', 159),
-('Total', 7667);
 
--- Full/Part-Time Enrollment Table
-CREATE TABLE full_part_time_enrollment (
-    student_level VARCHAR(50),
-    enrollment_type VARCHAR(20),
-    student_count INT,
-    percentage DECIMAL(5,2)
+INSERT INTO student_levels_2023 (year, level, count, percentage)
+VALUES
+    (2023, 'Undergraduate', 22046, 75.6),
+    (2023, 'Freshman', 5577, NULL),
+    (2023, 'Sophomore', 4839, NULL),
+    (2023, 'Junior', 4642, NULL),
+    (2023, 'Senior', 6438, NULL),
+    (2023, 'Non-Degree Seeking', 550, NULL),
+    (2023, 'Graduate', 6234, 21.4),
+    (2023, 'Masters', 4889, NULL),
+    (2023, 'Doctoral', 1497, NULL),
+    (2023, 'Certificate', 182, NULL),
+    (2023, 'Unclassified', 0, NULL),
+    (2023, 'Other Non-Degree', 15, NULL),
+    (2023, 'Professional', 886, 3.0),
+    (2023, 'Masters (Additional)', 364, NULL),
+    (2023, 'Doctoral (Additional)', 525, NULL),
+    (2023, 'Other Non-Degree (Additional)', 1, NULL);
+
+-- New Students
+CREATE TABLE new_students_2023 (
+    year INT,
+    student_type VARCHAR(255) PRIMARY KEY,
+    count INT
 );
-INSERT INTO full_part_time_enrollment (student_level, enrollment_type, student_count, percentage) VALUES
-('Undergraduate', 'Full-Time', 19221, 87.2),
-('Undergraduate', 'Part-Time', 2825, 12.8),
-('Graduate', 'Full-Time', 3294, 52.8),
-('Graduate', 'Part-Time', 2940, 47.2),
-('Professional', 'Full-Time', 635, 71.7),
-('Professional', 'Part-Time', 251, 28.3);
 
--- Tuition Residency Table
-CREATE TABLE tuition_residency (
-    residency_status VARCHAR(50),
-    student_count INT,
-    percentage DECIMAL(5,2)
+INSERT INTO new_students_2023 (year, student_type, count)
+VALUES
+    (2023, 'First-Time Freshmen', 5198),
+    (2023, 'New Transfers', 1169),
+    (2023, 'New Graduate Students', 1729),
+    (2023, 'New Professional Students', 317);
+
+-- Tuition Residency
+CREATE TABLE tuition_residency_2023 (
+    year INT,
+    residency_status VARCHAR(255) PRIMARY KEY,
+    count INT,
+    percentage FLOAT
 );
-INSERT INTO tuition_residency (residency_status, student_count, percentage) VALUES
-('Resident', 16369, 56.1),
-('Nonresident', 12797, 43.9);
 
--- New Students Table
-CREATE TABLE new_students (
-    student_type VARCHAR(50),
-    total_count INT
+INSERT INTO tuition_residency_2023 (year, residency_status, count, percentage)
+VALUES
+    (2023, 'Resident', 16369, 56.1),
+    (2023, 'Nonresident', 12797, 43.9);
+
+-- Gender Demographics
+CREATE TABLE gender_demographics_2023 (
+    year INT,
+    level VARCHAR(255),
+    gender VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level, gender)
 );
-INSERT INTO new_students (student_type, total_count) VALUES
-('First-Time Freshmen', 5198),
-('New Transfers', 1169),
-('New Graduate', 1729),
-('New Professional', 317);
 
--- Freshman Class Preparation Table
-CREATE TABLE freshman_preparation (
-    metric VARCHAR(100),
-    value DECIMAL(5,2)
+INSERT INTO gender_demographics_2023 (year, level, gender, count, percentage)
+VALUES
+    (2023, 'Undergraduate', 'Male', 10702, 48.5),
+    (2023, 'Undergraduate', 'Female', 11339, 51.4),
+    (2023, 'Undergraduate', 'Not Reported', 5, 0.1),
+    (2023, 'Graduate', 'Male', 2743, 44.0),
+    (2023, 'Graduate', 'Female', 3487, 55.9),
+    (2023, 'Graduate', 'Not Reported', 4, 0.1),
+    (2023, 'Professional', 'Male', 311, 35.1),
+    (2023, 'Professional', 'Female', 575, 64.9),
+    (2023, 'Professional', 'Not Reported', 0, 0.0);
+
+-- Class Preparation
+CREATE TABLE class_preparation_2023 (
+    year INT,
+    metric VARCHAR(255) PRIMARY KEY,
+    value FLOAT
 );
-INSERT INTO freshman_preparation (metric, value) VALUES
-('Average High School GPA', 3.65),
-('% with HS GPA of 4.0', 12.4),
-('% with high school ranking of #1', 4.3),
-('Average ACT', 26.0);
 
--- Gender Distribution Table
-CREATE TABLE gender_distribution (
-    student_level VARCHAR(50),
-    male_count INT,
-    female_count INT,
-    not_reported_count INT,
-    male_percentage DECIMAL(5,2),
-    female_percentage DECIMAL(5,2)
+INSERT INTO class_preparation_2023 (year, metric, value)
+VALUES
+    (2023, 'Average High School GPA', 3.65),
+    (2023, '% with HS GPA of 4.0', 12.4),
+    (2023, '% with High School Ranking of #1', 4.3),
+    (2023, 'Average ACT Score', 26.0);
+
+-- Instructional Resources
+CREATE TABLE instructional_resources_2023 (
+    year INT,
+    metric VARCHAR(255) PRIMARY KEY,
+    value FLOAT
 );
-INSERT INTO gender_distribution (student_level, male_count, female_count, not_reported_count, male_percentage, female_percentage) VALUES
-('Undergraduate', 10702, 11339, 5, 48.5, 51.4),
-('Graduate', 2743, 3487, 4, 44.0, 55.9),
-('Professional', 311, 575, 0, 35.1, 64.9);
 
--- Employees Table
-CREATE TABLE employees (
-    employee_category VARCHAR(50),
-    total_count INT
-);
-INSERT INTO employees (employee_category, total_count) VALUES
-('Faculty', 1780),
-('Staff', 3753),
-('Graduate Assistants', 1825),
-('Student Employees', 3003),
-('Temporary Employees', 1113),
-('Total Employees', 11474);
+INSERT INTO instructional_resources_2023 (year, metric, value)
+VALUES
+    (2023, 'Student/Faculty Ratio', 17.2),
+    (2023, 'Average Class Size', 32.0);
 
--- Faculty Tenure Track Table
-CREATE TABLE faculty_tenure_track (
-    rank VARCHAR(50),
+
+CREATE TABLE full_time_faculty_2023 (
+    year INT,
+    title VARCHAR(255),
     tenured INT,
     tenure_track INT,
-    term_eligible INT,
-    not_eligible INT,
+    term INT,
+    eligible INT,
     total INT
 );
-INSERT INTO faculty_tenure_track (rank, tenured, tenure_track, term_eligible, not_eligible, total) VALUES
-('Professor', 332, 0, 15, 1, 348),
-('Associate Professor', 344, 10, 31, 0, 385),
-('Assistant Professor', 0, 264, 60, 3, 327),
-('Instructor', 0, 0, 84, 55, 139),
-('Lecturer', 0, 0, 106, 67, 173),
-('Library Faculty', 13, 0, 0, 0, 13),
-('Researchers', 0, 0, 0, 355, 355),
-('Deans/Assoc. Deans/Asst. Deans', 38, 0, 2, 0, 40),
-('Total', 727, 274, 298, 481, 1780);
 
--- Faculty Composition Table
-CREATE TABLE faculty_composition (
-    composition_type VARCHAR(50),
-    percentage DECIMAL(5,2)
-);
-INSERT INTO faculty_composition (composition_type, percentage) VALUES
-('Female', 43.9),
-('Minority', 22.2),
-('International', 7.9);
+INSERT INTO full_time_faculty_2023 (year, title, tenured, tenure_track, term, eligible, total)
+VALUES
+    (2023, 'Professor', 332, 0, 15, 1, 348),
+    (2023, 'Associate Professor', 344, 10, 31, 0, 385),
+    (2023, 'Assistant Professor', 0, 264, 60, 3, 327),
+    (2023, 'Instructor', 0, 0, 84, 55, 139),
+    (2023, 'Lecturer', 0, 0, 106, 67, 173),
+    (2023, 'Library Faculty', 13, 0, 0, 0, 13),
+    (2023, 'Researchers', 0, 0, 0, 355, 355),
+    (2023, 'Deans/Associate/Assistant Deans', 38, 0, 2, 0, 40),
+    (2023, 'Total', 727, 274, 298, 481, 1780);
 
--- Instructional Resources Table
-CREATE TABLE instructional_resources (
-    metric VARCHAR(50),
-    value DECIMAL(5,2)
+-- Full/Part-Time Enrollment
+CREATE TABLE full_part_time_enrollment_2023 (
+    year INT,
+    level VARCHAR(255),
+    status VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level, status)
 );
-INSERT INTO instructional_resources (metric, value) VALUES
-('Student/Faculty Ratio', 17.2),
-('Average Class Size', 32.0);
+
+INSERT INTO full_part_time_enrollment_2023 (year, level, status, count, percentage)
+VALUES
+    (2023, 'Undergraduate', 'Full-Time', 19221, 87.2),
+    (2023, 'Undergraduate', 'Part-Time', 2825, 12.8),
+    (2023, 'Graduate', 'Full-Time', 3294, 52.8),
+    (2023, 'Graduate', 'Part-Time', 2940, 47.2),
+    (2023, 'Professional', 'Full-Time', 635, 71.7),
+    (2023, 'Professional', 'Part-Time', 251, 28.3);
+
+-- Full-Time Instructional Faculty
+CREATE TABLE full_time_instructional_faculty_2023 (
+    year INT,
+    demographic VARCHAR(255) PRIMARY KEY,
+    percentage FLOAT
+);
+
+INSERT INTO full_time_instructional_faculty_2023 (year, demographic, percentage)
+VALUES
+    (2023, 'Female', 43.9),
+    (2023, 'Minority', 22.2),
+    (2023, 'International', 7.9);
+
+CREATE TABLE employee_counts_2023 (
+    year INT,
+    category VARCHAR(255) PRIMARY KEY,
+    count INT
+);
+
+INSERT INTO employee_counts_2023 (year, category, count)
+VALUES
+    (2023, 'Employees Faculty', 1780),
+    (2023, 'Staff', 3753),
+    (2023, 'Graduate Assistants', 1825),
+    (2023, 'Student Employees', 3003),
+    (2023, 'Temporary Employees', 1113),
+    (2023, 'Total', 11474);
+
