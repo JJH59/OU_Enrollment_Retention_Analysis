@@ -154,6 +154,22 @@ VALUES
     (2018, 'Student/Faculty Ratio', 18.0),
     (2018, 'Average Class Size', 32.3);
 
+CREATE TABLE employee_count_2018 (
+    year INT,           -- Year identifier
+    category VARCHAR(255) PRIMARY KEY,
+    count INT
+);
+
+INSERT INTO employee_count_2018 (year, category, count)
+VALUES
+    (2018, 'Employees Faculty', 1922),
+    (2018, 'Staff', 4039),
+    (2018, 'Graduate Assistants', 1789),
+    (2018, 'Student Employees', 3758),
+    (2018, 'Temporary Employees', 895),
+    (2018, 'Total', 12403);
+
+
 CREATE TABLE full_time_faculty_2018 (
     year INT,  -- Added year column
     title VARCHAR(255),
