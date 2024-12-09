@@ -1,27 +1,26 @@
--- Table for Enrollment by Campus
-CREATE TABLE Enrollment_By_Campus_2019 (
+-- Table for enrollment by campus
+CREATE TABLE enrollment_by_campus_2019 (
     year INT,
-    Campus VARCHAR(50),
-    Enrollment INT,
-    Percentage DECIMAL(5, 2)
+    campus_name VARCHAR(255) PRIMARY KEY,
+    enrollment INT,
+    percentage FLOAT
 );
 
-INSERT INTO Enrollment_By_Campus_2019 (year, Campus, Enrollment, Percentage)
-VALUES
+INSERT INTO enrollment_by_campus_2019 (year, campus_name, enrollment, percentage)
+VALUES 
 (2019, 'Norman On-Campus', 25875, 84.9),
 (2019, 'OU-Tulsa - Norman Campus Programs', 702, 2.3),
-(2019, 'Extended Campus', 3911, 12.8),
-(2019, 'Total Norman Campus Unduplicated Headcount', 28089);
+(2019, 'Extended Campus', 3911, 12.8);
 
 -- Table for Race/Ethnicity
-CREATE TABLE Race_Ethnicity_2019 (
-    year INT,
-    Race_Ethnicity VARCHAR(50),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+CREATE TABLE race_ethnicity_2019 (
+  year INT,  -- New column for year
+  ethnicity VARCHAR(255) PRIMARY KEY,
+  count INT,
+  percentage FLOAT
 );
 
-INSERT INTO Race_Ethnicity_2019 (year, Race_Ethnicity, Count, Percentage)
+INSERT INTO race_ethnicity_2019 (year, ethnicity, count, percentage)
 VALUES
 (2019, 'American Indian/Alaska Native', 1102, 3.9),
 (2019, 'Asian', 1639, 5.8),
@@ -35,15 +34,14 @@ VALUES
 (2019, 'Not Reported', 630, 2.2);
 
 -- Table for Retention and Graduation Rates
-CREATE TABLE Retention_Graduation_Rates_2019 (
-    year INT,
-    Cohort VARCHAR(50),
-    Rate_Type VARCHAR(50),
-    Percentage DECIMAL(5, 2)
+CREATE TABLE retention_graduation_rates_2019 (
+    year INT,  -- New column for year
+    metric VARCHAR(255) PRIMARY KEY,
+    rate FLOAT
 );
 
-INSERT INTO Retention_Graduation_Rates_2019 (year, Cohort, Rate_Type, Percentage)
-VALUES
+INSERT INTO retention_graduation_rates_2019 (year, metric, rate)
+VALUES 
 (2019, 'Fall 2018 cohort', '1-Year Retention Rate', 88.2),
 (2019, 'Fall 2015 cohort', '4-Year Graduation Rate', 50.1),
 (2019, 'Fall 2013 cohort', '6-Year Graduation Rate', 70.3);
