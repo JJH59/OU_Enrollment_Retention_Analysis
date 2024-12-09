@@ -167,7 +167,7 @@ VALUES
     (2021, 'Average Class Size', 30.9);
 
 -- Employee Counts
-CREATE TABLE employee_counts_2021 (
+CREATE TABLE full_time_faculty_2021 (
     year INT,
     title VARCHAR(255),
     tenured INT,
@@ -177,7 +177,7 @@ CREATE TABLE employee_counts_2021 (
     total INT
 );
 
-INSERT INTO employee_counts_2021 (year, title, tenured, tenure_track, term, eligible, total)
+INSERT INTO full_time_faculty_2021 (year, title, tenured, tenure_track, term, eligible, total)
 VALUES
     (2021, 'Professor', 354, 0, 14, 2, 370),
     (2021, 'Associate Professor', 341, 8, 18, 1, 368),
@@ -221,14 +221,13 @@ VALUES
     (2021, 'Minority', 20.7),
     (2021, 'International', 9.9);
 
--- Employee Summary
-CREATE TABLE employee_summary_2021 (
+CREATE TABLE employee_counts_2021 (
     year INT,
     category VARCHAR(255) PRIMARY KEY,
     count INT
 );
 
-INSERT INTO employee_summary_2021 (year, category, count)
+INSERT INTO employee_counts_2021 (year, category, count)
 VALUES
     (2021, 'Employees Faculty', 2014),
     (2021, 'Staff', 3643),
