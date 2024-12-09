@@ -60,11 +60,12 @@ VALUES
     (2018, 'Graduate Certificate', 169),
     (2018, 'Total', 6900);
 
-CREATE TABLE student_levels (
-    year INT,  -- Added year column
-    level VARCHAR(255) PRIMARY KEY,
+ CREATE TABLE student_levels (
+    year INT,          -- Year column
+    level VARCHAR(255), -- Level column
     count INT,
-    percentage FLOAT
+    percentage FLOAT,
+    PRIMARY KEY (year, level)  -- Composite primary key
 );
 
 INSERT INTO student_levels (year, level, count, percentage)
@@ -81,10 +82,8 @@ VALUES
     (2018, 'Certificate', 264, NULL),
     (2018, 'Unclassified', 6, NULL),
     (2018, 'Other Non-Degree', 11, NULL),
-    (2018, 'Professional', 899, 3.1),
-    (2018, 'Masters', 388),
-    (2018, 'Doctoral', 511),
-    (2018, 'Other Non-Degree', 0);
+    (2018, 'Professional', 899, 3.1);
+
 
 CREATE TABLE new_students (
     year INT,  -- Added year column
