@@ -33,6 +33,14 @@ The findings from these analyses provide valuable insights into student behavior
 - Access to a MySQL or PostgreSQL database with the appropriate schema.
 - Knowledge of how to set up a local database if you are not using a hosted one.
 
+## Structure
+/data
+/sql
+/docs
+/visualizations
+README.md
+.gitignore
+
 ## Usage
 - Clone the repository to your local machine.
 - Follow the setup instructions in the README for setting up SQL queries and connecting to the database.
