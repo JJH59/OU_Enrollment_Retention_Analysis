@@ -1,38 +1,67 @@
 # OU_Enrollment_Retention_Analysis
 
 # Project Overview
-This project involves analyzing student enrollment and graduation data from the University of Oklahoma using SQL and visualizing the results in Tableau. The goal is to uncover trends in enrollment, retention rates, and graduation outcomes based on demographic factors.
+This project focuses on analyzing student enrollment, retention, and graduation data from the University of Oklahoma using SQL for data extraction and Tableau for visual storytelling. The analysis aims to identify key trends and demographic factors influencing student success, providing actionable insights to inform institutional strategies.
 
 ## Objectives
-- To uncover actionable insights into factors influencing student retention and graduation rates.
-- To visualize these insights in a clear and accessible way to support institutional strategies.
-- To provide a comprehensive understanding of demographic impacts on student suc
+- Understand trends in student enrollment, retention, and graduation outcomes.
+- Identify demographic factors (age, gender, ethnicity) correlated with retention and success rates.
+- Visualize findings through interactive Tableau dashboards for data-driven decision-making.
+- Support institutional strategies aimed at enhancing student retention and graduation performance.
 
 ## Description
-The primary goals are to:
+Key Steps:
 
-- Retrieve and clean the data to prepare it for analysis.
-- Examine trends in student enrollment, retention rates, and graduation outcomes.
-- Investigate correlations between demographic factors such as age, gender, and ethnicity with academic success.
+- Data Preparation: Extracting raw data from PDF sources and transforming it into a database-ready format for SQL-based cleaning and analysis.
+- Trend Analysis: Examining year-over-year changes in enrollment, retention, and graduation rates.
+- Demographic Insights: Investigating how variables such as age, gender, and ethnicity correlate with academic outcomes.
+- Interactive Visualization: Leveraging Tableau dashboards to present insights in a user-friendly, dynamic format tailored for stakeholders
 
-The findings from these analyses provide valuable insights into student behaviors and institutional performance. By identifying key factors influencing retention and graduation rates, this project informs institutional strategies aimed at improving student success.
+This methodology ensures a robust understanding of institutional performance while uncovering actionable opportunities for improvement.
 
 ## Methodology
-1. **Data Retrieval and Cleaning**: Using SQL, data is extracted from the higher education database, transformed to ensure consistency and accuracy, and prepared for further analysis.
-2. **Trend Analysis**: Employing statistical techniques to explore trends in enrollment and graduation rates over time.
-3. **Correlation Analysis**: Investigating relationships between demographic factors (age, gender, ethnicity) and academic outcomes.
-4. **Visualization**: The results are visualized using Tableau. Interactive dashboards and charts are created to illustrate key findings, such as retention rates, graduation trends, and demographic correlations, enabling stakeholders to make data-driven decisions.
+1. **Data Preparation**:
+
+- Convert raw data from PDFs (2018–2023) into structured formats suitable for database integration.
+- Build and populate a local SQL database for analysis.
+
+2. **SQL Analysis**:
+
+- Data Cleaning: Normalize and standardize tables to remove           inconsistencies.
+- Trend Analysis: Aggregate data to identify patterns in enrollment and graduation rates.
+- Demographic Analysis: Use SQL queries to explore the impact of demographic factors on student outcomes.
+
+3. **Visualization**:
+
+-  Design Tableau dashboards to highlight trends and key metrics.
+Include interactive elements (filters by year, demographics) for      user exploration.
+-  Visualize critical insights such as:
+  - Retention rates by cohort year.
+  - Graduation outcomes segmented by demographic group.
+  - Yearly enrollment comparisons.
+
+4. **Insights and Recommendations**:
+
+- Highlight actionable findings to improve retention rates.
+- Provide data-driven recommendations for institutional policies and student success initiatives.
 
 ## Tools Used
-- **SQL** for data retrieval and cleaning.
-- **Tableau** for data visualization and creating dashboards to showcase trends and insights.
+- **SQL** For data extraction, cleaning, and performing trend/correlation analyses.
+- **Tableau** To create dashboards that illustrate insights clearly and interactively.
 
 ## Prerequisites
-- Access to a MySQL or PostgreSQL database with the appropriate schema.
-- Knowledge of how to set up a local database if you are not using a hosted one.
+- A local or cloud-hosted SQL database (e.g., MySQL, PostgreSQL) to store processed data.
+- Structured tables derived from the PDF data with fields for year, demographic details, retention rates, and graduation outcomes.
+
+## Environment Setup
+- A SQL client (e.g., pgAdmin, MySQL Workbench) for querying and managing data.
+- Tableau Desktop for visualization
 
 ## Usage
-- Clone the repository to your local machine.
+- Clone the repository to your local machine and navigate to the project folder.
+  git clone https://github.com/your-username/OU_Enrollment_Retention_Analysis.git
+cd OU_Enrollment_Retention_Analysis
+- Set Up the Database
 - Explore the SQL scripts to understand how data is retrieved and transformed.
 - Open the provided Tableau files to view and interact with the visualizations.
 - Modify the SQL queries and Tableau dashboards as needed to adapt the project to different datasets or analyses.
