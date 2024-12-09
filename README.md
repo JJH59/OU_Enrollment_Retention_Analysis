@@ -1,7 +1,7 @@
 # OU_Enrollment_Retention_Analysis
 
 # Project Overview
-This project focuses on analyzing student enrollment, retention, and graduation data from the University of Oklahoma using SQL for data extraction and Tableau for visual storytelling. The analysis aims to identify key trends and demographic factors influencing student success, providing actionable insights to inform institutional strategies.
+This project analyzes student enrollment, retention, and graduation data from the University of Oklahoma using SQL for data extraction and Tableau for visual storytelling. The analysis aims to identify key trends and demographic factors influencing student success, providing actionable insights to inform institutional strategies.
 
 ## Objectives
 - Understand trends in student enrollment, retention, and graduation outcomes.
@@ -27,16 +27,16 @@ This methodology ensures a robust understanding of institutional performance whi
 
 2. **SQL Analysis**:
 
-- Data Cleaning: Normalize and standardize tables to remove           inconsistencies.
+- Data Cleaning: Normalize and standardize tables to remove inconsistencies.
 - Trend Analysis: Aggregate data to identify patterns in enrollment and graduation rates.
 - Demographic Analysis: Use SQL queries to explore the impact of demographic factors on student outcomes.
 
 3. **Visualization**:
 
--  Design Tableau dashboards to highlight trends and key metrics.
-Include interactive elements (filters by year, demographics) for      user exploration.
--  Visualize critical insights such as:
-  - Retention rates by cohort year.
+Design Tableau dashboards to highlight trends and key metrics.
+  - Include interactive elements (filters by year, demographics) for user exploration.
+  - Visualize critical insights such as:
+  - Retention rates by year.
   - Graduation outcomes segmented by demographic group.
   - Yearly enrollment comparisons.
 
