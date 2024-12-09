@@ -1,9 +1,7 @@
 # OU_Enrollment_Retention_Analysis
-This project involves analyzing student enrollment and graduation data from the University of Oklahoma using SQL and visualizing the results in Tableau. The goal is to uncover trends in enrollment, retention rates, and graduation outcomes based on demographic factors.
 
 # Project Overview
 This project involves analyzing student enrollment and graduation data from the University of Oklahoma using SQL and visualizing the results in Tableau. The goal is to uncover trends in enrollment, retention rates, and graduation outcomes based on demographic factors.
-
 
 ## Objectives
 - To uncover actionable insights into factors influencing student retention and graduation rates.
@@ -33,23 +31,11 @@ The findings from these analyses provide valuable insights into student behavior
 - Access to a MySQL or PostgreSQL database with the appropriate schema.
 - Knowledge of how to set up a local database if you are not using a hosted one.
 
-## Structure
-/data
-/sql
-/docs
-/visualizations
-README.md
-.gitignore
-
 ## Usage
 - Clone the repository to your local machine.
-- Follow the setup instructions in the README for setting up SQL queries and connecting to the database.
 - Explore the SQL scripts to understand how data is retrieved and transformed.
 - Open the provided Tableau files to view and interact with the visualizations.
 - Modify the SQL queries and Tableau dashboards as needed to adapt the project to different datasets or analyses.
-2. Set up the database schema by running the appropriate scripts (if tables need to be recreated from scratch).
-3. Navigate to the `/sql` directory.
-4. Run the SQL scripts to perform analysis on the prepared data.
 
 ## License
 This project is licensed under the Apache 2.0 License.
