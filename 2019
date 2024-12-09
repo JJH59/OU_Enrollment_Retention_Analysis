@@ -1,4 +1,4 @@
--- Table for enrollment by campus
+-- Enrollment by Campus
 CREATE TABLE enrollment_by_campus_2019 (
     year INT,
     campus_name VARCHAR(255) PRIMARY KEY,
@@ -7,207 +7,233 @@ CREATE TABLE enrollment_by_campus_2019 (
 );
 
 INSERT INTO enrollment_by_campus_2019 (year, campus_name, enrollment, percentage)
-VALUES 
-(2019, 'Norman On-Campus', 25875, 84.9),
-(2019, 'OU-Tulsa - Norman Campus Programs', 702, 2.3),
-(2019, 'Extended Campus', 3911, 12.8);
+VALUES
+    (2019, 'Norman On-Campus', 25875, 84.9),
+    (2019, 'OU-Tulsa', 702, 2.3),
+    (2019, 'Extended Campus', 3911, 12.8);
 
--- Table for Race/Ethnicity
+-- Race/Ethnicity
 CREATE TABLE race_ethnicity_2019 (
-  year INT,  -- New column for year
-  ethnicity VARCHAR(255) PRIMARY KEY,
-  count INT,
-  percentage FLOAT
+    year INT,
+    ethnicity VARCHAR(255) PRIMARY KEY,
+    count INT,
+    percentage FLOAT
 );
 
 INSERT INTO race_ethnicity_2019 (year, ethnicity, count, percentage)
 VALUES
-(2019, 'American Indian/Alaska Native', 1102, 3.9),
-(2019, 'Asian', 1639, 5.8),
-(2019, 'Black/African American', 1429, 5.1),
-(2019, 'Hispanic', 2837, 10.1),
-(2019, 'Native Hawaiian/Other Pacific Islander', 33, 0.1),
-(2019, 'Two or More Races', 2345, 8.3),
-(2019, 'Minority Subtotal', 9385, 33.4),
-(2019, 'White', 16373, 58.3),
-(2019, 'International', 1701, 6.1),
-(2019, 'Not Reported', 630, 2.2);
+    (2019, 'American Indian/Alaska Native', 1102, 3.9),
+    (2019, 'Asian', 1639, 5.8),
+    (2019, 'Black/African American', 1429, 5.1),
+    (2019, 'Hispanic', 2837, 10.1),
+    (2019, 'Native Hawaiian/Other Pacific Islander', 33, 0.1),
+    (2019, 'Two or More Races', 2345, 8.3),
+    (2019, 'Minority Subtotal', 9385, 33.4),
+    (2019, 'White', 16373, 58.3),
+    (2019, 'International', 1701, 6.1),
+    (2019, 'Not Reported', 630, 2.2);
 
--- Table for Retention and Graduation Rates
+-- Retention and Graduation Rates
 CREATE TABLE retention_graduation_rates_2019 (
-    year INT,  -- New column for year
+    year INT,
     metric VARCHAR(255) PRIMARY KEY,
     rate FLOAT
 );
 
 INSERT INTO retention_graduation_rates_2019 (year, metric, rate)
-VALUES 
-(2019, 'Fall 2018 cohort', '1-Year Retention Rate', 88.2),
-(2019, 'Fall 2015 cohort', '4-Year Graduation Rate', 50.1),
-(2019, 'Fall 2013 cohort', '6-Year Graduation Rate', 70.3);
+VALUES
+    (2019, '1-Year Retention Rate (Fall 2018 cohort)', 88.2),
+    (2019, '4-Year Graduation Rate (Fall 2015 cohort)', 50.1),
+    (2019, '6-Year Graduation Rate (Fall 2013 cohort)', 70.3);
 
--- Table for Degrees Awarded
-CREATE TABLE Degrees_Awarded_2019 (
+-- Degrees Awarded
+CREATE TABLE degrees_awarded_2019 (
     year INT,
-    Degree_Type VARCHAR(50),
-    Count INT
+    degree_level VARCHAR(255) PRIMARY KEY,
+    count INT
 );
 
-INSERT INTO Degrees_Awarded_2019 (year, Degree_Type, Count)
+INSERT INTO degrees_awarded_2019 (year, degree_level, count)
 VALUES
-(2019, 'Baccalaureate', 4605),
-(2019, 'Master\'s', 1924),
-(2019, 'Doctoral', 233),
-(2019, 'Law', 179),
-(2019, 'Undergraduate Certificate', 22),
-(2019, 'Graduate Certificate', 255),
-(2019, 'Total', 7218);
+    (2019, 'Baccalaureate', 4605),
+    (2019, 'Master\'s', 1924),
+    (2019, 'Doctoral', 233),
+    (2019, 'Law', 179),
+    (2019, 'Undergraduate Certificate', 22),
+    (2019, 'Graduate Certificate', 255),
+    (2019, 'Total', 7218);
 
--- Table for Student Levels
-CREATE TABLE Student_Levels_2019 (
+-- Student Levels
+CREATE TABLE student_levels_2019 (
     year INT,
-    Level VARCHAR(50),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+    level VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level)
 );
 
-INSERT INTO Student_Levels_2019 (year, Level, Count, Percentage)
+INSERT INTO student_levels_2019 (year, level, count, percentage)
 VALUES
-(2019, 'Undergraduate', 21778,77.5),
-(2019, 'Freshman', 4993, NULL),
-(2019, 'Sophomore', 4566, NULL),
-(2019, 'Junior', 4684, NULL),
-(2019, 'Senior', 7086, NULL),
-(2019, 'Non-Degree Seeking', 449, NULL),
-(2019, 'Graduate', 5360, 19.1),
-(2019, 'Masters', 4176, NULL),
-(2019, 'Doctoral', 1427, NULL),
-(2019, 'Certificate', 274, NULL),
-(2019, 'Unclassified', 2, NULL),
-(2019, 'Other Non-Degree', 8, NULL),
-(2019, 'Professional', 951, 3.4),
-(2019, 'Masters', 447, NULL),
-(2019, 'Doctoral', 502, NULL),
-(2019, 'Other Non-Degree', 2, NULL);
+    (2019, 'Undergraduate', 21778, 77.5),
+    (2019, 'Freshman', 4993, NULL),
+    (2019, 'Sophomore', 4566, NULL),
+    (2019, 'Junior', 4684, NULL),
+    (2019, 'Senior', 7086, NULL),
+    (2019, 'Non-Degree Seeking', 449, NULL),
+    (2019, 'Graduate', 5360, 19.1),
+    (2019, 'Masters', 4176, NULL),
+    (2019, 'Doctoral', 1427, NULL),
+    (2019, 'Certificate', 274, NULL),
+    (2019, 'Unclassified', 2, NULL),
+    (2019, 'Other Non-Degree', 8, NULL),
+    (2019, 'Professional', 951, 3.4),
+    (2019, 'Masters (Additional)', 447, NULL),
+    (2019, 'Doctoral (Additional)', 502, NULL),
+    (2019, 'Other Non-Degree (Additional)', 2, NULL);
 
--- Table for Full and Part-Time By Level
-CREATE TABLE Full_Part_Time_By_Level_2019 (
+-- New Students
+CREATE TABLE new_students_2019 (
     year INT,
-    Level VARCHAR(50),
-    Enrollment_Type VARCHAR(10),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+    student_type VARCHAR(255) PRIMARY KEY,
+    count INT
 );
 
-INSERT INTO Full_Part_Time_By_Level_2019 (year, Level, Enrollment_Type, Count, Percentage)
+INSERT INTO new_students_2019 (year, student_type, count)
 VALUES
-(2019, 'Undergraduates', 'Full-Time', 18982, 87.2),
-(2019, 'Undergraduates', 'Part-Time', 2796, 12.8),
-(2019, 'Graduate Students', 'Full-Time', 2322, 43.3),
-(2019, 'Graduate Students', 'Part-Time', 3038, 56.7),
-(2019, 'Professional Students', 'Full-Time', 614, 64.6),
-(2019, 'Professional Students', 'Part-Time', 337, 35.4);
+    (2019, 'First-Time Freshmen', 4523),
+    (2019, 'New Transfers', 1119),
+    (2019, 'New Graduate Students', 963),
+    (2019, 'New Professional Students', 219);
 
--- Table for Tuition Residency
-CREATE TABLE Tuition_Residency_2019 (
+-- Tuition Residency
+CREATE TABLE tuition_residency_2019 (
     year INT,
-    Residency_Status VARCHAR(20),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+    residency_status VARCHAR(255) PRIMARY KEY,
+    count INT,
+    percentage FLOAT
 );
 
-INSERT INTO Tuition_Residency_2019 (year, Residency_Status, Count, Percentage)
+INSERT INTO tuition_residency_2019 (year, residency_status, count, percentage)
 VALUES
-(2019, 'Resident', 16966, 60.4),
-(2019, 'Nonresident', 11123, 39.6);
+    (2019, 'Resident', 16966, 60.4),
+    (2019, 'Nonresident', 11123, 39.6);
 
--- Table for Gender Breakdown
-CREATE TABLE Gender_Breakdown_2019 (
+-- Gender Demographics
+CREATE TABLE gender_demographics_2019 (
     year INT,
-    Group VARCHAR(50),
-    Gender VARCHAR(10),
-    Count INT,
-    Percentage DECIMAL(5, 2)
+    level VARCHAR(255),
+    gender VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level, gender)
 );
 
-INSERT INTO Gender_Breakdown_2019 (year, Group, Gender, Count, Percentage)
+INSERT INTO gender_demographics_2019 (year, level, gender, count, percentage)
 VALUES
-(2019, 'Undergraduates', 'Male', 10695, 49.1),
-(2019, 'Undergraduates', 'Female', 11083, 50.9),
-(2019, 'Graduate Students', 'Male', 2566, 47.9),
-(2019, 'Graduate Students', 'Female', 2793, 52.1),
-(2019, 'Professional Students', 'Male', 406, 42.7),
-(2019, 'Professional Students', 'Female', 538, 56.6);
+    (2019, 'Undergraduate', 'Male', 10695, 49.1),
+    (2019, 'Undergraduate', 'Female', 11083, 50.9),
+    (2019, 'Undergraduate', 'Not Reported', 0, 0.0),
+    (2019, 'Graduate', 'Male', 2566, 47.9),
+    (2019, 'Graduate', 'Female', 2793, 52.1),
+    (2019, 'Graduate', 'Not Reported', 1, 0.0),
+    (2019, 'Professional', 'Male', 406, 42.7),
+    (2019, 'Professional', 'Female', 538, 56.6),
+    (2019, 'Professional', 'Not Reported', 7, 0.7);
 
--- Table for Freshman Class Preparation
-CREATE TABLE Freshman_Class_Preparation_2019 (
+-- Class Preparation
+CREATE TABLE class_preparation_2019 (
     year INT,
-    Metric VARCHAR(50),
-    Value DECIMAL(5, 2)
+    metric VARCHAR(255) PRIMARY KEY,
+    value FLOAT
 );
 
-INSERT INTO Freshman_Class_Preparation_2019 (year, Metric, Value)
+INSERT INTO class_preparation_2019 (year, metric, value)
 VALUES
-(2019, 'Average High School GPA', 3.62),
-(2019, '% with HS GPA of 4.0', 12.2),
-(2019, '% with High School Ranking of #1', 5.4),
-(2019, 'Average ACT', 25.9);
+    (2019, 'Average High School GPA', 3.62),
+    (2019, '% with HS GPA of 4.0', 12.2),
+    (2019, '% with High School Ranking of #1', 5.4),
+    (2019, 'Average ACT Score', 25.9);
 
--- Table for New Students Enrollment
-CREATE TABLE New_Students_Enrollment_2019 (
+-- Instructional Resources
+CREATE TABLE instructional_resources_2019 (
     year INT,
-    Student_Type VARCHAR(50),
-    Count INT
+    metric VARCHAR(255) PRIMARY KEY,
+    value FLOAT
 );
 
-INSERT INTO New_Students_Enrollment_2019 (year, Student_Type, Count)
+INSERT INTO instructional_resources_2019 (year, metric, value)
 VALUES
-(2019, 'First-Time Freshmen', 4523),
-(2019, 'New Transfers', 1119),
-(2019, 'New Graduate', 963),
-(2019, 'New Professional', 219);
+    (2019, 'Student/Faculty Ratio', 17.3),
+    (2019, 'Average Class Size', 31.9);
 
--- Table for Employees
-CREATE TABLE Employees_2019 (
+CREATE TABLE full_time_faculty_2019 (
     year INT,
-    Role VARCHAR(50),
-    Count INT
+    title VARCHAR(255),
+    tenured INT,
+    tenure_track INT,
+    term INT,
+    eligible INT,
+    total INT
 );
 
-INSERT INTO Employees_2019 (year, Role, Count)
+INSERT INTO full_time_faculty_2019 (year, title, tenured, tenure_track, term, eligible, total)
 VALUES
-(2019, 'Faculty', 2002),
-(2019, 'Staff', 3664),
-(2019, 'Graduate Assistants', 1770),
-(2019, 'Student Employees', 3500),
-(2019, 'Professional Temporary Employees', 1111),
-(2019, 'Total', 12047);
+    (2019, 'Professor', 366, 0, 12, 1, 379),
+    (2019, 'Associate Professor', 302, 15, 24, 1, 342),
+    (2019, 'Assistant Professor', 0, 230, 60, 4, 294),
+    (2019, 'Instructor', 0, 0, 60, 77, 137),
+    (2019, 'Lecturer', 0, 0, 59, 52, 111),
+    (2019, 'Library Faculty', 15, 0, 0, 0, 15),
+    (2019, 'Researchers', 0, 0, 0, 346, 346),
+    (2019, 'Deans/Associate/Assistant Deans', 37, 0, 4, 1, 42),
+    (2019, 'Total', 720, 245, 219, 482, 1666);
 
--- Table for Full-Time Faculty
-CREATE TABLE Full_Time_Faculty_2019 (
+-- Full/Part-Time Enrollment
+CREATE TABLE full_part_time_enrollment_2019 (
     year INT,
-    Rank VARCHAR(50),
-    Tenured INT,
-    Tenure_Track INT,
-    Renew_Term INT,
-    Not_Eligible INT,
-    Total INT
+    level VARCHAR(255),
+    status VARCHAR(255),
+    count INT,
+    percentage FLOAT,
+    PRIMARY KEY (year, level, status)
 );
 
-INSERT INTO Full_Time_Faculty_2019 (year, Rank, Tenured, Tenure_Track, Renew_Term, Not_Eligible, Total)
+INSERT INTO full_part_time_enrollment_2019 (year, level, status, count, percentage)
 VALUES
-(2019, 'Professor', 366, 0, 12, 1, 379),
-(2019, 'Associate Professor', 302, 15, 24, 1, 342),
-(2019, 'Assistant Professor', 0, 230, 60, 4, 294),
-(2019, 'Instructor', 0, 0, 60, 77, 137),
-(2019, 'Lecturer', 0, 0, 59, 52, 111),
-(2019, 'Library Faculty', 15, 0, 0, 0, 15),
-(2019, 'Researchers', 0, 0, 0, 346, 346),
-(2019, 'Deans/Assoc. Deans/Asst. Deans', 37, 0, 4, 1, 42),
-(2019, 'Total', 720, 245, 219, 482, 1666);
+    (2019, 'Undergraduate', 'Full-Time', 18982, 87.2),
+    (2019, 'Undergraduate', 'Part-Time', 2796, 12.8),
+    (2019, 'Graduate', 'Full-Time', 2322, 43.3),
+    (2019, 'Graduate', 'Part-Time', 3038, 56.7),
+    (2019, 'Professional', 'Full-Time', 614, 64.6),
+    (2019, 'Professional', 'Part-Time', 337, 35.4);
 
+-- Full-Time Instructional Faculty
+CREATE TABLE full_time_instructional_faculty_2019 (
+    year INT,
+    demographic VARCHAR(255) PRIMARY KEY,
+    percentage FLOAT
+);
 
+INSERT INTO full_time_instructional_faculty_2019 (year, demographic, percentage)
+VALUES
+    (2019, 'Female', 39.2),
+    (2019, 'Minority', 18.9),
+    (2019, 'International', 8.2);
 
+CREATE TABLE employee_count_2019 (
+    year INT,
+    category VARCHAR(255) PRIMARY KEY,
+    count INT
+);
+
+INSERT INTO employee_count_2019 (year, category, count)
+VALUES
+    (2019, 'Employees Faculty', 2002),
+    (2019, 'Staff', 3664),
+    (2019, 'Graduate Assistants', 1770),
+    (2019, 'Student Employees', 3500),
+    (2019, 'Temporary Employees', 1111),
+    (2019, 'Total', 12047);
 
 
 
