@@ -1,25 +1,24 @@
-CREATE TABLE enrollment_by_campus (
+CREATE TABLE enrollment_by_campus_2018 (
     year INT,           -- Year identifier
     campus_name VARCHAR(255) PRIMARY KEY,
     enrollment INT,
     percentage FLOAT
 );
 
-INSERT INTO enrollment_by_campus (year, campus_name, enrollment, percentage)
+INSERT INTO enrollment_by_campus_2018 (year, campus_name, enrollment, percentage)
 VALUES 
     (2018, 'Norman On-Campus', 26165, 86.5),
     (2018, 'OU-Tulsa', 695, 2.3),
     (2018, 'Extended Campus', 3398, 11.2);
 
-
-CREATE TABLE race_ethnicity (
+CREATE TABLE race_ethnicity_2018 (
   year INT,  -- New column for year
   ethnicity VARCHAR(255) PRIMARY KEY,
   count INT,
   percentage FLOAT
 );
 
-INSERT INTO race_ethnicity (year, ethnicity, count, percentage)
+INSERT INTO race_ethnicity_2018 (year, ethnicity, count, percentage)
 VALUES 
     (2018, 'American Indian/Alaska Native', 1160, 4.1),
     (2018, 'Asian', 1614, 5.6),
@@ -32,25 +31,25 @@ VALUES
     (2018, 'International', 1844, 6.5),
     (2018, 'Not Reported', 758, 2.7);
 
-CREATE TABLE retention_graduation_rates (
+CREATE TABLE retention_graduation_rates_2018 (
     year INT,  -- New column for year
     metric VARCHAR(255) PRIMARY KEY,
     rate FLOAT
 );
 
-INSERT INTO retention_graduation_rates (year, metric, rate)
+INSERT INTO retention_graduation_rates_2018 (year, metric, rate)
 VALUES 
     (2018, '1-Year Retention Rate (Fall 2017 cohort)', 90.2),
     (2018, '4-Year Graduation Rate (Fall 2014 cohort)', 46.0),
     (2018, '6-Year Graduation Rate (Fall 2012 cohort)', 67.7);
 
-CREATE TABLE degrees_awarded (
+CREATE TABLE degrees_awarded_2018 (
     year INT,  -- New column for year
     degree_level VARCHAR(255) PRIMARY KEY,
     count INT
 );
 
-INSERT INTO degrees_awarded (year, degree_level, count)
+INSERT INTO degrees_awarded_2018 (year, degree_level, count)
 VALUES 
     (2018, 'Baccalaureate', 4347),
     (2018, 'Master\'s', 1975),
@@ -60,7 +59,7 @@ VALUES
     (2018, 'Graduate Certificate', 169),
     (2018, 'Total', 6900);
 
- CREATE TABLE student_levels (
+CREATE TABLE student_levels_2018 (
     year INT,          -- Year column
     level VARCHAR(255), -- Level column
     count INT,
@@ -68,7 +67,7 @@ VALUES
     PRIMARY KEY (year, level)  -- Composite primary key
 );
 
-INSERT INTO student_levels (year, level, count, percentage)
+INSERT INTO student_levels_2018 (year, level, count, percentage)
 VALUES 
     (2018, 'Undergraduate', 22170, 77.6),
     (2018, 'Freshman', 5035, NULL),
@@ -82,36 +81,36 @@ VALUES
     (2018, 'Certificate', 264, NULL),
     (2018, 'Unclassified', 6, NULL),
     (2018, 'Other Non-Degree', 11, NULL),
-    (2018, 'Professional', 899, 3.1);
+    (2018, 'Professional', 899, 3.1),
+    (2018, 'Masters', 388, NULL),
+    (2018, 'Doctoral', 511, NULL);
 
-
-CREATE TABLE new_students (
+CREATE TABLE new_students_2018 (
     year INT,  -- Added year column
     student_type VARCHAR(255) PRIMARY KEY,
     count INT
 );
 
-INSERT INTO new_students (year, student_type, count)
+INSERT INTO new_students_2018 (year, student_type, count)
 VALUES 
     (2018, 'First-Time Freshmen', 4385),
     (2018, 'New Transfers', 1214),
     (2018, 'New Graduate Students', 878),
     (2018, 'New Professional Students', 223);
 
-CREATE TABLE tuition_residency (
+CREATE TABLE tuition_residency_2018 (
     year INT,  -- Added year column
     residency_status VARCHAR(255) PRIMARY KEY,
     count INT,
     percentage FLOAT
 );
 
-INSERT INTO tuition_residency (year, residency_status, count, percentage)
+INSERT INTO tuition_residency_2018 (year, residency_status, count, percentage)
 VALUES 
     (2018, 'Resident', 17524, 61.3),
     (2018, 'Nonresident', 11058, 38.7);
 
-
-CREATE TABLE gender_demographics (
+CREATE TABLE gender_demographics_2018 (
     year INT,  -- Added year column
     level VARCHAR(255),
     gender VARCHAR(255),
@@ -120,7 +119,7 @@ CREATE TABLE gender_demographics (
     PRIMARY KEY (year, level, gender)
 );
 
-INSERT INTO gender_demographics (year, level, gender, count, percentage)
+INSERT INTO gender_demographics_2018 (year, level, gender, count, percentage)
 VALUES 
     (2018, 'Undergraduate', 'Male', 11007, 49.6),
     (2018, 'Undergraduate', 'Female', 11161, 50.3),
@@ -131,32 +130,31 @@ VALUES
     (2018, 'Professional', 'Female', 491, 54.6),
     (2018, 'Professional', 'Not Reported', 4, 0.4);
 
-CREATE TABLE class_preparation (
+CREATE TABLE class_preparation_2018 (
     year INT,  -- Added year column
     metric VARCHAR(255) PRIMARY KEY,
     value FLOAT
 );
 
-INSERT INTO class_preparation (year, metric, value)
+INSERT INTO class_preparation_2018 (year, metric, value)
 VALUES 
     (2018, 'Average High School GPA', 3.63),
     (2018, '% with HS GPA of 4.0', 12.7),
     (2018, '% with High School Ranking of #1', 4.9),
     (2018, 'Average ACT Score', 26.2);
 
-
-CREATE TABLE instructional_resources (
+CREATE TABLE instructional_resources_2018 (
     year INT,  -- Added year column
     metric VARCHAR(255) PRIMARY KEY,
     value FLOAT
 );
 
-INSERT INTO instructional_resources (year, metric, value)
+INSERT INTO instructional_resources_2018 (year, metric, value)
 VALUES 
     (2018, 'Student/Faculty Ratio', 18.0),
     (2018, 'Average Class Size', 32.3);
 
-CREATE TABLE employee_counts (
+CREATE TABLE full_time_faculty_2018 (
     year INT,  -- Added year column
     title VARCHAR(255),
     tenured INT,
@@ -166,7 +164,7 @@ CREATE TABLE employee_counts (
     total INT
 );
 
-INSERT INTO employee_counts (year, title, tenured, tenure_track, term, eligible, total)
+INSERT INTO full_time_faculty_2018 (year, title, tenured, tenure_track, term, eligible, total)
 VALUES 
     (2018, 'Professor', 356, 0, 10, 1, 367),
     (2018, 'Associate Professor', 295, 12, 20, 5, 332),
@@ -178,7 +176,7 @@ VALUES
     (2018, 'Deans/Associate/Assistant Deans', 37, 0, 3, 1, 41),
     (2018, 'Total', 703, 250, 205, 473, 1631);
 
-CREATE TABLE full_part_time_enrollment (
+CREATE TABLE full_part_time_enrollment_2018 (
     year INT,  -- Added year column
     level VARCHAR(255),
     status VARCHAR(255),
@@ -187,26 +185,27 @@ CREATE TABLE full_part_time_enrollment (
     PRIMARY KEY (year, level, status)
 );
 
-INSERT INTO full_part_time_enrollment (year, level, status, count, percentage)
+INSERT INTO full_part_time_enrollment_2018 (year, level, status, count, percentage)
 VALUES 
     (2018, 'Undergraduate', 'Full-Time', 19033, 86.0),
-    (2018, 'Undergraduate', 'Part-Time', 3064, 14.0),
-    (2018, 'Graduate', 'Full-Time', 1280, 50.6),
-    (2018, 'Graduate', 'Part-Time', 1259, 49.4),
-    (2018, 'Professional', 'Full-Time', 122, 26.1),
-    (2018, 'Professional', 'Part-Time', 345, 73.9);
+    (2018, 'Undergraduate', 'Part-Time', 3137, 14.0),
+    (2018, 'Graduate', 'Full-Time', 2388, 43.3),
+    (2018, 'Graduate', 'Part-Time', 3125, 56.7),
+    (2018, 'Professional', 'Full-Time', 608, 67.6),
+    (2018, 'Professional', 'Part-Time', 291, 32.4);
 
-CREATE TABLE full_time_instructional_faculty (
+CREATE TABLE full_time_instructional_faculty_2018 (
     year INT,  -- Added year column
     demographic VARCHAR(255) PRIMARY KEY,
     percentage FLOAT
 );
 
-INSERT INTO full_time_instructional_faculty (year, demographic, percentage)
+INSERT INTO full_time_instructional_faculty_2018 (year, demographic, percentage)
 VALUES 
     (2018, 'Female', 38.8),
     (2018, 'Minority', 18.3),
     (2018, 'International', 8.1);
+
 
 
 
